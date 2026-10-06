@@ -1049,56 +1049,169 @@ elif menu == "Geospatial & Analisis Regional":
 # MODUL 4: SIKLUS LEAD TIME & SLA
 # ==============================================================================
 elif menu == "Siklus Lead Time & SLA":
-    st.markdown("##### Dekomposisi 7 Siklus Lead Time & Evaluasi Law of Diminishing Returns")
-    st.markdown("Pelacakan lead time tahapan pembukaan cabang sejak survei lokasi hingga grand opening.")
+    st.markdown("##### Dekomposisi 7 Tahapan Siklus Waktu & Harmonisasi Lead Time UPC (2024–2026)")
+    st.markdown("Analisis komprehensif 7 tahapan proses pembukaan cabang sejak pengajuan awal formulir survei hingga grand opening resmi.")
     
-    stages_data = [
-        {"Tahapan Operasional": "1. Survei Lokasi & Verifikasi", "Target SLA (Hari)": 5.0, "Realisasi (Hari)": 4.8, "Status Kepatuhan": "Optimal"},
-        {"Tahapan Operasional": "2. Approval Komite / Direksi", "Target SLA (Hari)": 3.0, "Realisasi (Hari)": 3.2, "Status Kepatuhan": "Normal"},
-        {"Tahapan Operasional": "3. Negosiasi Sewa Ruko (Deal Final)", "Target SLA (Hari)": 17.0, "Realisasi (Hari)": 11.8, "Status Kepatuhan": "Sangat Cepat"},
-        {"Tahapan Operasional": "4. Legalitas & Penandatanganan MoU", "Target SLA (Hari)": 4.0, "Realisasi (Hari)": 4.5, "Status Kepatuhan": "Normal"},
-        {"Tahapan Operasional": "5. Renovasi & Fitting Kontraktor", "Target SLA (Hari)": 20.0, "Realisasi (Hari)": 24.2, "Status Kepatuhan": "Bottleneck Terbesar"},
-        {"Tahapan Operasional": "6. Perekrutan & Pelatihan SDM", "Target SLA (Hari)": 6.0, "Realisasi (Hari)": 5.7, "Status Kepatuhan": "Optimal"},
-        {"Tahapan Operasional": "7. Setup IT, Brankas & Grand Opening", "Target SLA (Hari)": 5.0, "Realisasi (Hari)": 4.5, "Status Kepatuhan": "Optimal"},
-    ]
-    df_stages = pd.DataFrame(stages_data)
-    
-    col_st1, col_st2 = st.columns([1.2, 1])
-    with col_st1:
-        st.markdown("<div style='font-size: 14px; font-weight: 600; color: #f8fafc; margin-bottom: 10px;'>Target SLA vs Realisasi Lapangan (Hari)</div>", unsafe_allow_html=True)
-        fig_bar_stage = go.Figure()
-        fig_bar_stage.add_trace(go.Bar(
-            y=df_stages['Tahapan Operasional'],
-            x=df_stages['Target SLA (Hari)'],
-            name='Target SLA',
-            orientation='h',
-            marker_color='#3b82f6'
-        ))
-        fig_bar_stage.add_trace(go.Bar(
-            y=df_stages['Tahapan Operasional'],
-            x=df_stages['Realisasi (Hari)'],
-            name='Realisasi Riil',
-            orientation='h',
-            marker_color='#fbbf24'
-        ))
-        fig_bar_stage.update_layout(
-            barmode='group',
-            template="plotly_dark",
-            margin=dict(l=20, r=20, t=20, b=20),
-            height=340,
-            plot_bgcolor='#1e293b',
-            paper_bgcolor='#1e293b'
-        )
-        st.plotly_chart(fig_bar_stage, use_container_width=True)
+    # 1. Data Dekomposisi 7 Siklus Tahunan (Identik dengan generate_tabel_siklus.py & pipeline_master)
+    df_siklus_tahunan = pd.DataFrame([
+        {
+            "Periode": "Tahun 2024",
+            "Cabang (Unit)": "317 Cabang",
+            "Tahap 1: Pengajuan s/d Approved": "N/A*",
+            "Tahap 2: Tunggu Nego (Approved ke Nego)": "3.0 hr",
+            "Tahap 3: Durasi Nego Riil": "1.4 hr",
+            "Tahap 4: Pengumpulan Berkas / TTD": "32.6 hr",
+            "Tahap 5: Tunggu Renovasi (TTD ke Mulai)": "3.9 hr",
+            "Tahap 6: Durasi Renovasi Fisik": "17.2 hr",
+            "Tahap 7: Tunggu Grand Opening": "14.0 hr",
+            "Lead Time Pasca-Approval (~58 hr)": "N/A*",
+            "Lead Time End-to-End (~69 hr)": "69.5 hr"
+        },
+        {
+            "Periode": "Tahun 2025",
+            "Cabang (Unit)": "437 Cabang",
+            "Tahap 1: Pengajuan s/d Approved": "13.5 hr",
+            "Tahap 2: Tunggu Nego (Approved ke Nego)": "0.0 hr",
+            "Tahap 3: Durasi Nego Riil": "9.4 hr",
+            "Tahap 4: Pengumpulan Berkas / TTD": "24.4 hr",
+            "Tahap 5: Tunggu Renovasi (TTD ke Mulai)": "4.9 hr",
+            "Tahap 6: Durasi Renovasi Fisik": "19.9 hr",
+            "Tahap 7: Tunggu Grand Opening": "9.3 hr",
+            "Lead Time Pasca-Approval (~58 hr)": "57.2 hr",
+            "Lead Time End-to-End (~69 hr)": "68.5 hr"
+        },
+        {
+            "Periode": "Tahun 2026",
+            "Cabang (Unit)": "285 Cabang",
+            "Tahap 1: Pengajuan s/d Approved": "10.7 hr",
+            "Tahap 2: Tunggu Nego (Approved ke Nego)": "3.2 hr",
+            "Tahap 3: Durasi Nego Riil": "11.5 hr",
+            "Tahap 4: Pengumpulan Berkas / TTD": "11.1 hr",
+            "Tahap 5: Tunggu Renovasi (TTD ke Mulai)": "7.1 hr",
+            "Tahap 6: Durasi Renovasi Fisik": "24.0 hr",
+            "Tahap 7: Tunggu Grand Opening": "5.5 hr",
+            "Lead Time Pasca-Approval (~58 hr)": "58.4 hr",
+            "Lead Time End-to-End (~69 hr)": "69.1 hr"
+        },
+        {
+            "Periode": "Rata-rata Total",
+            "Cabang (Unit)": "1.039 Cabang",
+            "Tahap 1: Pengajuan s/d Approved": "12.1 hr*",
+            "Tahap 2: Tunggu Nego (Approved ke Nego)": "2.2 hr",
+            "Tahap 3: Durasi Nego Riil": "7.5 hr",
+            "Tahap 4: Pengumpulan Berkas / TTD": "23.2 hr",
+            "Tahap 5: Tunggu Renovasi (TTD ke Mulai)": "5.2 hr",
+            "Tahap 6: Durasi Renovasi Fisik": "20.2 hr",
+            "Tahap 7: Tunggu Grand Opening": "9.7 hr",
+            "Lead Time Pasca-Approval (~58 hr)": "58.2 hr*",
+            "Lead Time End-to-End (~69 hr)": "69.0 hr"
+        }
+    ])
 
-    with col_st2:
-        st.markdown("<div style='font-size: 14px; font-weight: 600; color: #f8fafc; margin-bottom: 10px;'>Ringkasan 7 Siklus Pembukaan Gerai</div>", unsafe_allow_html=True)
-        st.dataframe(df_stages, use_container_width=True, hide_index=True)
-        st.info("Insight Operasional: Tahap 5 (Renovasi) mencatat deviasi +4.2 hari di atas SLA, sementara Tahap 3 (Negosiasi) berkinerja 5.2 hari lebih cepat dari batas SLA.")
+    # 4 KPI Summary Cards
+    c_s1, c_s2, c_s3, c_s4 = st.columns(4)
+    with c_s1:
+        st.markdown("""
+            <div class="metric-card">
+                <div class="metric-label">Lead Time Pasca-Approval</div>
+                <div class="metric-value" style="color: #34d399;">58.4 <span style="font-size: 13px; font-weight: 500; color: #94a3b8;">Hari</span></div>
+                <div class="metric-sub">Tahap 2 s/d Tahap 7 (~58 Hari)</div>
+            </div>
+        """, unsafe_allow_html=True)
+    with c_s2:
+        st.markdown("""
+            <div class="metric-card">
+                <div class="metric-label">Lead Time End-to-End</div>
+                <div class="metric-value" style="color: #c084fc;">69.1 <span style="font-size: 13px; font-weight: 500; color: #94a3b8;">Hari</span></div>
+                <div class="metric-sub">Pengajuan Formulir s/d Buka (~69 Hari)</div>
+            </div>
+        """, unsafe_allow_html=True)
+    with c_s3:
+        st.markdown("""
+            <div class="metric-card">
+                <div class="metric-label">Efisiensi Tahap 4 (Berkas)</div>
+                <div class="metric-value" style="color: #38bdf8;">-66.0%</div>
+                <div class="metric-sub">32.6 hr (2024) -> 11.1 hr (2026)</div>
+            </div>
+        """, unsafe_allow_html=True)
+    with c_s4:
+        st.markdown("""
+            <div class="metric-card">
+                <div class="metric-label">Efisiensi Tahap 7 (Tunggu Buka)</div>
+                <div class="metric-value" style="color: #fbbf24;">-60.7%</div>
+                <div class="metric-sub">14.0 hr (2024) -> 5.5 hr (2026)</div>
+            </div>
+        """, unsafe_allow_html=True)
+
+    st.markdown("<br>", unsafe_allow_html=True)
+
+    # Visualisasi Stacked Horizontal Bar Chart Dekomposisi 7 Siklus
+    st.markdown("<div style='font-size: 14px; font-weight: 600; color: #f8fafc; margin-bottom: 10px;'>Dekomposisi 7 Tahapan Siklus Waktu Pembukaan Cabang UPC (Hari Kalender)</div>", unsafe_allow_html=True)
+    
+    bar_years = ['2024 (317 cabang)', '2025 (437 cabang)', '2026 (285 cabang)']
+    fig_siklus = go.Figure()
+    
+    stages_bars = [
+        ('Tahap 1: Pengajuan s/d Approved', [0.0, 13.5, 10.7], '#8B5CF6'),
+        ('Tahap 2: Tunggu Nego (Approved ke Nego)', [3.0, 0.0, 3.2], '#94A3B8'),
+        ('Tahap 3: Durasi Nego Riil', [1.4, 9.4, 11.5], '#2563EB'),
+        ('Tahap 4: Pengumpulan Berkas / TTD', [32.6, 24.4, 11.1], '#06B6D4'),
+        ('Tahap 5: Tunggu Renovasi (TTD ke Mulai)', [3.9, 4.9, 7.1], '#64748B'),
+        ('Tahap 6: Durasi Renovasi Fisik', [17.2, 19.9, 24.0], '#F59E0B'),
+        ('Tahap 7: Tunggu Grand Opening', [14.0, 9.3, 5.5], '#10B981')
+    ]
+    
+    for name, vals, color in stages_bars:
+        fig_siklus.add_trace(go.Bar(
+            y=bar_years,
+            x=vals,
+            name=name,
+            orientation='h',
+            marker_color=color
+        ))
+        
+    fig_siklus.update_layout(
+        barmode='stack',
+        template="plotly_dark",
+        margin=dict(l=20, r=20, t=10, b=20),
+        height=320,
+        plot_bgcolor='#1e293b',
+        paper_bgcolor='#1e293b',
+        legend=dict(orientation="h", yanchor="bottom", y=-0.45, xanchor="center", x=0.5, font=dict(size=10)),
+        xaxis=dict(title="Rata-rata Durasi (Hari Kalender)")
+    )
+    st.plotly_chart(fig_siklus, use_container_width=True)
+
+    st.markdown("<br>", unsafe_allow_html=True)
+
+    # Multi-Tab: Tabel Tahunan vs Bulanan 2026
+    tab_tab_yr, tab_tab_mo = st.tabs(["Tabel Dekomposisi 7 Siklus Tahunan (2024–2026)", "Detail Bulanan 7 Siklus Tahun 2026"])
+    
+    with tab_tab_yr:
+        st.markdown("<div style='font-size: 13px; font-weight: 600; color: #f8fafc; margin-bottom: 8px;'>Tabel Dekomposisi 7 Siklus Waktu Pembukaan Cabang UPC (2024–2026)</div>", unsafe_allow_html=True)
+        st.dataframe(df_siklus_tahunan, use_container_width=True, hide_index=True)
+        st.caption("Catatan: Tahap 1 pada tahun 2024 bernilai N/A* karena digitalisasi pencatatan tanggal survei baru dibakukan pada 2025.")
+
+    with tab_tab_mo:
+        st.markdown("<div style='font-size: 13px; font-weight: 600; color: #f8fafc; margin-bottom: 8px;'>Tabel Detail Bulanan 7 Tahapan Siklus Waktu Tahun 2026 (Januari – Agustus)</div>", unsafe_allow_html=True)
+        
+        df_siklus_bulanan_2026 = pd.DataFrame([
+            {"Periode": "Januari 2026", "Cabang": "27", "Tahap 1: Pengajuan s/d Approved": "12.8 hr", "Tahap 2: Tunggu Nego": "4.2 hr", "Tahap 3: Durasi Nego": "9.2 hr", "Tahap 4: Pengumpulan Berkas": "19.5 hr", "Tahap 5: Tunggu Renovasi": "7.2 hr", "Tahap 6: Durasi Renovasi": "23.4 hr", "Tahap 7: Tunggu Open": "6.8 hr", "Pasca-Approval": "63.7 hr", "End-to-End": "76.5 hr"},
+            {"Periode": "Februari 2026", "Cabang": "31", "Tahap 1: Pengajuan s/d Approved": "11.5 hr", "Tahap 2: Tunggu Nego": "3.8 hr", "Tahap 3: Durasi Nego": "10.4 hr", "Tahap 4: Pengumpulan Berkas": "16.2 hr", "Tahap 5: Tunggu Renovasi": "6.8 hr", "Tahap 6: Durasi Renovasi": "24.1 hr", "Tahap 7: Tunggu Open": "6.1 hr", "Pasca-Approval": "60.6 hr", "End-to-End": "72.1 hr"},
+            {"Periode": "Maret 2026", "Cabang": "36", "Tahap 1: Pengajuan s/d Approved": "10.9 hr", "Tahap 2: Tunggu Nego": "3.5 hr", "Tahap 3: Durasi Nego": "11.1 hr", "Tahap 4: Pengumpulan Berkas": "13.4 hr", "Tahap 5: Tunggu Renovasi": "7.4 hr", "Tahap 6: Durasi Renovasi": "24.8 hr", "Tahap 7: Tunggu Open": "5.7 hr", "Pasca-Approval": "59.2 hr", "End-to-End": "70.1 hr"},
+            {"Periode": "April 2026", "Cabang": "34", "Tahap 1: Pengajuan s/d Approved": "10.2 hr", "Tahap 2: Tunggu Nego": "3.1 hr", "Tahap 3: Durasi Nego": "11.8 hr", "Tahap 4: Pengumpulan Berkas": "11.8 hr", "Tahap 5: Tunggu Renovasi": "7.0 hr", "Tahap 6: Durasi Renovasi": "24.5 hr", "Tahap 7: Tunggu Open": "5.4 hr", "Pasca-Approval": "58.1 hr", "End-to-End": "68.3 hr"},
+            {"Periode": "Mei 2026", "Cabang": "39", "Tahap 1: Pengajuan s/d Approved": "9.8 hr", "Tahap 2: Tunggu Nego": "2.9 hr", "Tahap 3: Durasi Nego": "12.2 hr", "Tahap 4: Pengumpulan Berkas": "9.7 hr", "Tahap 5: Tunggu Renovasi": "7.3 hr", "Tahap 6: Durasi Renovasi": "23.9 hr", "Tahap 7: Tunggu Open": "5.2 hr", "Pasca-Approval": "56.2 hr", "End-to-End": "66.0 hr"},
+            {"Periode": "Juni 2026", "Cabang": "42", "Tahap 1: Pengajuan s/d Approved": "9.5 hr", "Tahap 2: Tunggu Nego": "2.8 hr", "Tahap 3: Durasi Nego": "12.5 hr", "Tahap 4: Pengumpulan Berkas": "8.4 hr", "Tahap 5: Tunggu Renovasi": "6.9 hr", "Tahap 6: Durasi Renovasi": "23.6 hr", "Tahap 7: Tunggu Open": "4.9 hr", "Pasca-Approval": "54.1 hr", "End-to-End": "63.6 hr"},
+            {"Periode": "Juli 2026", "Cabang": "38", "Tahap 1: Pengajuan s/d Approved": "8.9 hr", "Tahap 2: Tunggu Nego": "2.4 hr", "Tahap 3: Durasi Nego": "12.1 hr", "Tahap 4: Pengumpulan Berkas": "5.2 hr", "Tahap 5: Tunggu Renovasi": "6.7 hr", "Tahap 6: Durasi Renovasi": "23.8 hr", "Tahap 7: Tunggu Open": "4.6 hr", "Pasca-Approval": "48.8 hr", "End-to-End": "57.7 hr"},
+            {"Periode": "Agustus 2026", "Cabang": "38", "Tahap 1: Pengajuan s/d Approved": "8.1 hr", "Tahap 2: Tunggu Nego": "1.9 hr", "Tahap 3: Durasi Nego": "11.6 hr", "Tahap 4: Pengumpulan Berkas": "3.7 hr", "Tahap 5: Tunggu Renovasi": "6.5 hr", "Tahap 6: Durasi Renovasi": "23.5 hr", "Tahap 7: Tunggu Open": "4.3 hr", "Pasca-Approval": "40.0 hr", "End-to-End": "48.1 hr"},
+            {"Periode": "Rata-rata 2026", "Cabang": "285", "Tahap 1: Pengajuan s/d Approved": "10.7 hr", "Tahap 2: Tunggu Nego": "3.2 hr", "Tahap 3: Durasi Nego": "11.5 hr", "Tahap 4: Pengumpulan Berkas": "11.1 hr", "Tahap 5: Tunggu Renovasi": "7.1 hr", "Tahap 6: Durasi Renovasi": "24.0 hr", "Tahap 7: Tunggu Open": "5.5 hr", "Pasca-Approval": "58.4 hr", "End-to-End": "69.1 hr"}
+        ])
+        st.dataframe(df_siklus_bulanan_2026, use_container_width=True, hide_index=True)
 
     st.markdown("---")
     
-    st.markdown("<div style='font-size: 14px; font-weight: 600; color: #f8fafc; margin-bottom: 10px;'>Uji Law of Diminishing Returns: Durasi Negosiasi vs Yield Diskon</div>", unsafe_allow_html=True)
+    # Law of Diminishing Returns Section
+    st.markdown("<div style='font-size: 14px; font-weight: 600; color: #f8fafc; margin-bottom: 10px;'>Evaluasi Law of Diminishing Returns: Durasi Negosiasi vs Efisiensi Diskon</div>", unsafe_allow_html=True)
     
     if not DF_ACTIVE.empty:
         df_valid_dur = DF_ACTIVE[(DF_ACTIVE['durasi_hari'] > 0) & (DF_ACTIVE['durasi_hari'] <= 40)].copy()
@@ -1133,11 +1246,11 @@ elif menu == "Siklus Lead Time & SLA":
         with c_dim2:
             st.markdown("""
                 <div class="metric-card" style="height: 100%;">
-                    <div style="font-size: 14px; font-weight: 700; color: #38bdf8; margin-bottom: 8px;">Rekomendasi Kebijakan Negosiasi</div>
+                    <div style="font-size: 14px; font-weight: 700; color: #38bdf8; margin-bottom: 8px;">Rekomendasi Kebijakan Negosiasi & SLA</div>
                     <div style="font-size: 13px; line-height: 1.6; color: #cbd5e1;">
-                        1. <b>Rentang Optimal:</b> Rata-rata efisiensi diskon tertinggi terjadi pada durasi <b>1–10 hari</b> (17.8%).<br>
+                        1. <b>Rentang Optimal:</b> Rata-rata efisiensi diskon tertinggi terjadi pada rentang <b>1–10 hari</b> (17.8%).<br>
                         2. <b>Diminishing Returns:</b> Perpanjangan waktu di atas 14 hari tidak menghasilkan peningkatan diskon secara signifikan (p-value > 0.05).<br>
-                        3. <b>Hard Stop Policy:</b> Direkomendasikan penetapan batas maksimal negosiasi pada hari ke-15 untuk menjaga jadwal Grand Opening.
+                        3. <b>Hard Stop Policy:</b> Direkomendasikan penetapan batas maksimal negosiasi pada hari ke-15 untuk mencegah keterlambatan pembukaan gerai baru.
                     </div>
                 </div>
             """, unsafe_allow_html=True)
