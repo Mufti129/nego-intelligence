@@ -1,0 +1,34 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.class
+*.pyc
+
+# Caches and virtual environments
+.cache/
+.pytest_cache/
+.venv/
+venv/
+env/
+ENV/
+
+# OS specific files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary office lock files
+~.docx
+~.xlsx
+~.pptx
+
+# Large binaries and logs
+bin/
+*.log
+
+# Streamlit temporary
+.streamlit/secrets.toml

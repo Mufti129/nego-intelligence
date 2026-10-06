@@ -1,0 +1,3114 @@
+=== PAGE 1 ===
+ 
+PUSAT  GADAI  INDONESIA 
+DIVISI  BISNIS  —  BUSINESS  DEVELOPMENT 
+ 
+LAPORAN  ANALISIS  KOMPREHENSIF 
+PROSES  PEMBUKAAN  CABANG  (UPC) 
+Pendalaman  Analisis  —  Evaluasi  Kualitas  Data,  Kinerja  Negosiasi,  Kontraktor,  dan  Peta  Geospasial  Wilayah 
+ 
+Periode  Analisis:   Januari  2024  –  Juli  2026 
+Total  Dataset:   995  Transaksi  Pengajuan  Cabang 
+Cakupan  Wilayah:   84  Kabupaten/Kota,  Jawa  –  Bali  –  Sumatera 
+Disusun  oleh:   Mukhammad  Rekza  Mufti 
+Jabatan:   Data  Analyst  –  Divisi  Bisnis 
+Klasifikasi:   KONFIDENSIAL  –  Hanya  Kalangan  Internal 
+ 
+ 
+
+=== PAGE 2 ===
+RINGKASAN  EKSEKUTIF 
+Laporan  ini  disusun  berdasarkan  995  transaksi  pengajuan  pembukaan  cabang  (Unit  Pelayanan  
+Cabang/UPC)
+ 
+periode
+ 
+Januari
+ 
+2024
+ 
+hingga
+ 
+Juli
+ 
+2026.
+ 
+Laporan
+ 
+ini
+ 
+menambahkan
+ 
+tiga
+ 
+lapisan
+ 
+analisis:
+ 
+(1)
+ 
+audit
+ 
+kualitas
+ 
+data
+ 
+yang
+ 
+mengungkap
+ 
+bahwa
+ 
+sebagian
+ 
+tren
+ 
+yang
+ 
+tampak
+ 
+pada
+ 
+laporan
+ 
+awal
+ 
+merupakan
+ 
+artefak
+ 
+ketersediaan
+ 
+data,
+ 
+bukan
+ 
+perubahan
+ 
+kinerja
+ 
+riil;
+ 
+(2)
+ 
+uji
+ 
+signifikansi
+ 
+statistik
+ 
+atas
+ 
+perbandingan
+ 
+negosiator
+ 
+dan
+ 
+kontraktor;
+ 
+dan
+ 
+(3)
+ 
+peta
+ 
+geospasial
+ 
+skor
+ 
+kemudahan
+ 
+negosiasi
+ 
+yang
+ 
+dibangun
+ 
+secara
+ 
+proporsional
+ 
+menggunakan
+ 
+data
+ 
+batas
+ 
+wilayah
+ 
+administratif. 
+Total  Pengajuan
+ 
+995 
+Jan  2024  –  Jul  2026
+ 
+Rata-rata  Total  Proses
+ 
+68,3  hari 
+Pengajuan
+ 
+→
+ 
+Grand
+ 
+Opening
+ 
+Kepatuhan  SLA  Renovasi
+ 
+63,8% 
+per  transaksi,  bukan  agregat
+ 
+Tren  Kepatuhan
+ 
+↓
+ 
+15,4
+ 
+poin 
+2024:
+ 
+69,5%
+ 
+→
+ 
+2026:
+ 
+54,1%
+ 
+ 
+Lima  temuan  utama  : 
+●
+ Angka  “Efisiensi  Nego”  2024–2025  tidak  mencerminkan  kinerja  riil.  Field  harga  sewa  final  
+(rental_price)
+ 
+identik
+ 
+dengan
+ 
+harga
+ 
+penawaran
+ 
+awal
+ 
+(asking_price)
+ 
+pada
+ 
+100%
+ 
+transaksi
+ 
+2024
+ 
+dan
+ 
+97,7%
+ 
+transaksi
+ 
+2025
+  
+bukan
+ 
+karena
+ 
+negosiator
+ 
+gagal
+ 
+mendapat
+ 
+diskon,
+ 
+melainkan
+ 
+karena
+ 
+pencatatan
+ 
+diskon
+ 
+negosiasi
+ 
+baru
+ 
+konsisten
+ 
+dijalankan
+ 
+mulai
+ 
+2026
+ 
+(36%
+ 
+harga
+ 
+berbeda
+ 
+dari
+ 
+asking
+ 
+price).
+ 
+Tren
+ 
+“0,00%
+ 
+→
+ 
+0,40%
+ 
+→
+ 
+10,42%”
+ 
+yang
+ 
+tampak
+ 
+seperti
+ 
+perbaikan
+ 
+progresif
+ 
+sesungguhnya
+ 
+adalah
+ 
+artefak
+ 
+cakupan
+ 
+data. 
+●
+ 
+Tren
+ 
+kepatuhan
+ 
+SLA
+ 
+renovasi
+ 
+menurun
+ 
+signifikan
+ 
+setiap
+ 
+tahun
+ 
+69,5%
+ 
+(2024)
+ 
+→
+ 
+65,1%
+ 
+(2025)
+ 
+→
+ 
+54,1%
+ 
+(2026). 
+●
+ Kontraktor  Trimo  menanggung  volume  pekerjaan  terbesar  ketiga  (176  unit)  namun  kepatuhan  SLA  
+terendah
+ 
+kedua
+ 
+(36,9%)
+ 
+kombinasi
+ 
+volume
+ 
+tinggi
+ 
+dan
+ 
+risiko
+ 
+tinggi
+ 
+yang
+ 
+perlu
+ 
+perhatian
+ 
+operasional
+ 
+segera. 
+●
+ Perbedaan  efisiensi  diskon  antara  negosiator  Bonita  dan  Mirza  pada  2026  signifikan  secara  statistik  
+(rata-rata
+ 
+8,2%
+ 
+vs
+ 
+14,1%;
+ 
+Mann-Whitney
+ 
+p<0,001)
+ 
+meskipun
+ 
+durasi
+ 
+negosiasi
+ 
+keduanya
+ 
+hampir
+ 
+sama,
+ 
+mengindikasikan
+ 
+perbedaan
+ 
+pendekatan/leverage
+ 
+negosiasi,
+ 
+bukan
+ 
+sekadar
+ 
+perbedaan
+ 
+waktu
+ 
+yang
+ 
+dihabiskan. 
+●
+ Kohort  2026  belum  tuntas 
+ 
+ 
+Sumber:  Data  Mentah  UPC  PGI  (995  transaksi,  Jan  2024–Jul  2026)
+ 
+KONFIDENSIAL
+ Halaman  2  dari  15
+ 
+ 
+
+=== PAGE 3 ===
+BAB  1:  LATAR  BELAKANG  &  METODOLOGI 
+1.1  Konteks  &  Tujuan 
+Proses  pembukaan  Unit  Pelayanan  Cabang  (UPC)  PGI  melibatkan  enam  tahap  berurutan:  pengajuan  
+dokumen
+ 
+lokasi,
+ 
+persetujuan
+ 
+(approval),
+ 
+negosiasi
+ 
+sewa
+ 
+lokasi,
+ 
+renovasi
+ 
+ruko,
+ 
+dan
+ 
+masa
+ 
+persiapan
+ 
+hingga
+ 
+grand
+ 
+opening.
+ 
+Laporan
+ 
+ini
+ 
+menyajikan
+ 
+kinerja
+ 
+tiap
+ 
+tahap
+ 
+secara
+ 
+deskriptif
+ 
+per
+ 
+tahun,
+ 
+surveyor,
+ 
+negosiator,
+ 
+wilayah,
+ 
+dan
+ 
+kontraktor.
+ 
+Laporan
+ 
+ini
+ 
+bertujuan
+ 
+memvalidasi
+ 
+keandalan
+ 
+data
+ 
+di
+ 
+balik
+ 
+angka-angka
+ 
+tersebut,
+ 
+menambah
+ 
+pengujian
+ 
+statistik
+ 
+pada
+ 
+temuan
+ 
+yang
+ 
+bersifat
+ 
+komparatif,
+ 
+dan
+ 
+memperluas
+ 
+analisis
+ 
+ke
+ 
+dimensi
+ 
+geospasial
+ 
+serta
+ 
+korelasi
+ 
+antar-variabel
+ 
+yang
+ 
+belum
+ 
+dieksplorasi. 
+1.2  Definisi  Parameter 
+Nama  Metrik
+ Deskripsi
+ 
+Lama  Realisasi  
+Pengajuan
+→
+Approved
+ 
+Durasi  dari  pembuatan  dokumen  pengajuan  hingga  mendapat  persetujuan.
+ 
+Tunggu
+ 
+Approved
+→
+Awal
+ 
+Nego
+ Jeda  waktu  sejak  pengajuan  disetujui  hingga  negosiasi  (sewa  tempat)  dimulai.
+ 
+Lama  Realisasi  Nego
+ Total  durasi  negosiasi  dari  hari  pertama  hingga  mencapai  kesepakatan  (deal).
+ 
+Tunggu
+ 
+Nego
+→
+Renovasi
+ 
+Awal
+ Jeda  waktu  dari  kesepakatan  (deal)  hingga  pengerjaan  renovasi  lokasi  dimulai.
+ 
+Lama  Realisasi  Renovasi  Selesai
+ 
+Total  waktu  pengerjaan  renovasi  dari  hari  pertama  hingga  fisik  bangunan  100%  selesai.
+ 
+Tunggu
+ 
+Selesai
+ 
+Renov
+→
+Open
+ Cabang
+ 
+Masa  persiapan  akhir  (pengisian  barang,  setup  sistem,  training)  hingga  grand  opening.
+ 
+Lama  Proses  Pembukaan  Cabang
+ Total  durasi  keseluruhan  dari  pengajuan  awal  hingga  cabang  resmi  beroperasi.
+ 
+Tabel  1.1  Definisi  tujuh  metrik  inti  dan  deskripsi  
+Nama  Metrik
+ Parameter  Database
+ 
+Lama  Realisasi  
+Pengajuan
+→
+Approved
+ 
+p.application_date,  p.approved_at
+ 
+Tunggu
+ 
+Approved
+→
+Awal
+ 
+Nego
+ p.approved_at,  n.negotiated_at  AS  tanggal_awal_nego
+ 
+Lama  Realisasi  Nego
+ n.negotiated_at  AS  tanggal_awal_nego,  lc.event_at  AS  tgl_nego_berakhir
+ 
+Tunggu
+ 
+Nego
+→
+Renovasi
+ 
+Awal
+  lc.event_at  AS  tgl_nego_berakhir,  rn.start_date  as  tgl_awal_renovasi
+ 
+Lama  Realisasi  Renovasi  Selesai
+ 
+rn.start_date  as  tgl_awal_renovasi,  rn.end_date  as  kpi_tgl_akhir_renovasi,  ip.paid_at  as  tgl_akhir_realisasi_renovasi
+ 
+Tunggu
+ 
+Selesai
+ 
+Renov
+→
+Open
+ Cabang
+ 
+ip.paid_at  as  tgl_akhir_realisasi_renovasi,  tgl_operasional_cabang_HRIS
+ 
+Lama  Proses  Pembukaan  Cabang
+ p.application_date,  tgl.operasional  HRIS
+ 
+Tabel  1.2  Definisi  tujuh  metrik  inti  dan  parameter  database
+ 
+1.3  Sumber  Data  &  Cakupan 
+Dataset  mentah  berisi  995  baris  transaksi  dengan  50  kolom,  mencakup  periode  aplikasi  3  Januari  2024  
+hingga
+ 
+24
+ 
+Juli
+ 
+2026,
+ 
+tersebar
+ 
+di
+ 
+84
+ 
+kabupaten/kota,
+ 
+dinegosiasikan
+ 
+oleh
+ 
+9
+ 
+negosiator
+ 
+(2
+ 
+utama),
+ 
+disurvei
+ 
+oleh
+ 
+9
+ 
+surveyor,
+ 
+dan
+ 
+dikerjakan
+ 
+oleh
+ 
+11
+ 
+kontraktor
+ 
+renovasi.
+ 
+Peta
+ 
+wilayah
+ 
+menggunakan
+ 
+referensi
+ 
+batas
+ 
+ 
+Sumber:  Data  Mentah  UPC  PGI  (995  transaksi,  Jan  2024–Jul  2026)
+ 
+KONFIDENSIAL
+ Halaman  3  dari  15
+ 
+ 
+
+=== PAGE 4 ===
+administratif  dari  berkas  topojson  Indonesia-topojson  (tvalentius)  yang  disediakan  untuk  keperluan  
+visualisasi
+ 
+geospasial. 
+1.4  Audit  Kualitas  Data 
+Sebelum  menyajikan  hasil  analisis,  setiap  field  kunci  diuji  kelengkapan  dan  konsistensinya.  Temuan  berikut  
+menjadi
+ 
+dasar
+ 
+seluruh
+ 
+koreksi
+ 
+interpretasi
+ 
+pada
+ 
+bab-bab
+ 
+berikutnya
+ 
+dan
+ 
+tidak
+ 
+muncul
+ 
+pada
+ 
+laporan
+ 
+awal: 
+Isu
+ Cakupan/Besaran
+ Dampak  terhadap  Analisis
+ 
+Field  approved_at  kosong
+ 
+100%  (2024),  69,2%  (2025),  0%  (2026)
+ 
+“Avg  Pengajuan(days)”  2025  pada  laporan  awal  (14  hari)  dihitung  hanya  dari  134/435  transaksi  (30,8%)  bukan  representasi  tahun  penuh.  Data  2024  sepenuhnya  tidak  dapat  dihitung.
+ 
+rental_price  =  asking_price  (diskon  nego  tercatat  0%)
+ 
+100%  baris  2024,  97,7%  baris  2025,  63,2%  baris  2026
+ 
+Tren
+ 
+“Efisiensi
+ 
+Nego”
+ 
+0,00%
+→
+0,40%
+→
+10,42%
+ 
+bukan
+ perbaikan  kinerja  field  ini  praktis  baru  tervalidasi/terisi  pada  2026.
+ 
+Kohort  2026  belum  tuntas  (document_status)
+ 
+Hanya  151/242  (62,4%)  berstatus  “done”
+ 
+Seluruh  metrik  2026  (avg  durasi,  kepatuhan  SLA,  efisiensi  nego)  berisiko  bias  survivor  maksdunya  kasus  yang  lambat/belum  selesai  belum  sepenuhnya  masuk  hitungan.
+ 
+Tanggal  sentinel  “1  Januari  2000”  pada  Open_cabang
+ 
+13  dari  995  baris  (1,3%)
+ 
+Placeholder  untuk  cabang  yang  belum  resmi  buka;  sudah  otomatis  ter-exclude  dari  kolom  durasi  turunan  (lama_proses_pembukaan_cabang  bernilai  kosong)  —  diverifikasi  konsisten.
+ 
+Harga  nego/net  bernilai  0
+ 2  dari  995  baris  (0,2%)
+ 
+Anomali  entri  minor,  tidak  material  terhadap  agregat  manapun.
+ 
+4  wilayah  tanpa  geometri  peta  (pemekaran  administratif  baru)
+ 
+46  dari  995  transaksi  (4,6%)
+ 
+Kab.  Bandung  Barat,  Kab.  Pangandaran,  Kota  Serang,  Kota  Tangerang  Selatan  tidak  tersedia  pada  berkas  topojson  rujukan  (lebih  tua  dari  pemekaran  wilayah  tsb.)  dikecualikan  hanya  dari  peta,  tetap  masuk  seluruh  tabel  analisis.
+ 
+Tabel  1.2  Ringkasan  audit  kualitas  data  dan  dampaknya  terhadap  interpretasi  metrik.
+ 
+Karena
+ 
+dua
+ 
+metrik
+ 
+utama
+ 
+(durasi
+ 
+pengajuan
+→
+approved
+ 
+dan
+ 
+efisiensi
+ 
+diskon
+ 
+nego)
+ 
+baru
+ 
+valid
+ 
+secara
+ 
+konsisten
+ 
+mulai
+ 
+2026,
+ 
+perbandingan
+ 
+lintas-tahun
+ 
+pada
+ 
+laporan
+ 
+ini
+ 
+secara
+ 
+eksplisit
+ 
+memisahkan
+ 
+periode
+ 
+“data
+ 
+historis
+ 
+(2024–2025)”
+ 
+untuk
+ 
+metrik
+ 
+operasional
+ 
+inti,
+ 
+(nego,
+ 
+renovasi,
+ 
+SLA)
+ 
+dari
+ 
+“data
+ 
+2026”
+ 
+yang
+ 
+satu-satunya
+ 
+periode
+ 
+yang
+ 
+andal
+ 
+untuk
+ 
+analisis
+ 
+efisiensi
+ 
+diskon
+ 
+dan
+ 
+kecepatan
+ 
+approval.  
+ 
+Sumber:  Data  Mentah  UPC  PGI  (995  transaksi,  Jan  2024–Jul  2026)
+ 
+KONFIDENSIAL
+ Halaman  4  dari  15
+ 
+ 
+
+=== PAGE 5 ===
+BAB  2:  KINERJA  KESELURUHAN  &  TREN  WAKTU 
+2.1  Overall  Performance  per  Tahun 
+Tahun
+ 
+Jml  Pengajuan
+ 
+Avg  Pengajuan  (hari)
+ 
+Tunggu  Nego  (hari)
+ 
+Avg  Nego  (hari)
+ 
+Tunggu  Renov  (hari)
+ 
+Avg  Renovasi  (hari)
+ 
+Tunggu  Open  (hari)
+ 
+Total  Waktu  (hari)
+ 
+2024
+ 318
+ n/a*
+ 3
+ 19
+ 4
+ 17
+ 14
+ 70
+ 
+2025
+ 435
+ 14*  (n=134)
+ 2
+ 22
+ 4
+ 19
+ 9
+ 67
+ 
+2026
+ 242
+ 10
+ 11
+ 24
+ 6
+ 24
+ 6
+ 68
+ 
+Grand  Total
+ 
+995
+ 11  (n=376)
+ 8
+ 22
+ 4
+ 20
+ 10
+ 68
+ 
+Tabel  2.1  Kinerja  keseluruhan  per  tahun.  (*)  Avg  Pengajuan  2024  tidak  dapat  dihitung  (approved_at  100%  kosong);  nilai  
+2025
+ 
+dan
+ 
+Grand
+ 
+Total
+ 
+dihitung
+ 
+hanya
+ 
+dari
+ 
+baris
+ 
+yang
+ 
+memiliki
+ 
+approved_at
+ 
+valid
+  
+lihat
+ 
+Bab
+ 
+1.4.
+ 
+Total  waktu  pembukaan  cabang  relatif  stabil  di  kisaran  67–70  hari  sepanjang  tiga  tahun.  Namun  
+komposisinya
+ 
+bergeser:
+ 
+porsi
+ 
+waktu
+ 
+tunggu
+ 
+administratif
+ 
+(renov
+→
+open)
+ 
+mengecil
+ 
+dari
+ 
+2024
+ 
+ke
+ 
+2026,
+ 
+sementara
+ 
+porsi
+ 
+aktif
+ 
+negosiasi
+ 
+dan
+ 
+renovasi
+ 
+justru
+ 
+memanjang
+ 
+(nego
+ 
+19
+→
+24
+ 
+hari;
+ 
+renovasi
+ 
+17
+→
+24
+ 
+hari).
+ 
+Ini
+ 
+mengindikasikan
+ 
+proses
+ 
+administratif
+ 
+menjadi
+ 
+lebih
+ 
+efisien,
+ 
+tetapi
+ 
+proses
+ 
+inti
+ 
+(nego
+ 
+&
+ 
+renovasi)
+ 
+yang
+ 
+melibatkan
+ 
+pihak
+ 
+eksternal
+ 
+(pemilik
+ 
+lahan,
+ 
+kontraktor)
+ 
+menjadi
+ 
+titik
+ 
+tekan
+ 
+baru
+ 
+yang
+ 
+perlu
+ 
+difokuskan
+ 
+pada
+ 
+rekomendasi
+ 
+Bab
+ 
+7 
+2.2  Tren  Volume  Bulanan 
+Volume  pengajuan  bulanan  menunjukkan  tren  naik  bertahap  dari  awal  2024  hingga  puncaknya  pada  awal  
+2026,
+ 
+sebelum
+ 
+menurun
+ 
+tajam
+ 
+pada
+ 
+data
+ 
+Juli
+ 
+2026
+ 
+yang
+ 
+bersifat
+ 
+parsial
+ 
+(bulan
+ 
+berjalan
+ 
+saat
+ 
+ekstraksi
+ 
+data).
+ 
+Grafik
+ 
+tren
+ 
+bulanan
+ 
+detail
+ 
+tersedia
+ 
+pada
+ 
+dokumen
+ 
+sumber
+ 
+(Gambar
+ 
+2.1)
+ 
+ 
+Gambar  2.1  Gambar  trend  pengajuan  lokasi
+ 
+2.3  Dekomposisi  Durasi  per  Tahap  (Analisis  Bottleneck) 
+Dekomposisi  berikut  menunjukkan  dua  tahap  yang  paling  mendominasi  siklus  68  hari  rata-rata:  
+ 
+Sumber:  Data  Mentah  UPC  PGI  (995  transaksi,  Jan  2024–Jul  2026)
+ 
+KONFIDENSIAL
+ Halaman  5  dari  15
+ 
+ 
+
+
+=== PAGE 6 ===
+ 
+ 
+Gambar  2.2  Rata-rata  durasi  tiap  tahap  proses,  dihitung  dari  seluruh  995  transaksi.
+ 
+Proses  Negosiasi  (21,5  hari)  dan  Proses  Renovasi  (19,6  hari)  bersama-sama  menyumbang  sekitar  60%  dari  
+total
+ 
+68,3
+ 
+hari
+ 
+siklus
+ 
+pembukaan
+ 
+cabang
+ 
+jauh
+ 
+lebih
+ 
+besar
+ 
+dari
+ 
+empat
+ 
+tahap
+ 
+lain
+ 
+digabungkan.
+ 
+Implikasinya,
+ 
+upaya
+ 
+percepatan
+ 
+yang
+ 
+paling
+ 
+berdampak
+ 
+(highest
+ 
+leverage)
+ 
+adalah
+ 
+pada
+ 
+penguatan
+ 
+kapasitas
+ 
+negosiasi
+ 
+(Bab
+ 
+4)
+ 
+dan
+ 
+pengelolaan
+ 
+kontraktor
+ 
+renovasi
+ 
+(Bab
+ 
+6),
+ 
+bukan
+ 
+pada
+ 
+tahap
+ 
+administratif
+ 
+yang
+ 
+durasinya
+ 
+sudah
+ 
+relatif
+ 
+kecil.  
+ 
+Sumber:  Data  Mentah  UPC  PGI  (995  transaksi,  Jan  2024–Jul  2026)
+ 
+KONFIDENSIAL
+ Halaman  6  dari  15
+ 
+ 
+
+
+=== PAGE 7 ===
+BAB  3:  KINERJA  PENGAJUAN  -  SURVEYOR  /  UPC 
+3.1  Volume  Pengajuan  per  Surveyor 
+Surveyor
+ Total  Pengajuan  (2024–2026)
+ Aktif  di  Tahun
+ 
+Djadjang
+ 304
+ 2024,  2025,  2026
+ 
+salma
+ 289
+ 2024,  2025,  2026
+ 
+Hanif
+ 215
+ 2024,  2025,  2026
+ 
+Dika
+ 57
+ 2025,  2026
+ 
+Dara
+ 50
+ 2026
+ 
+Sinta
+ 30
+ 2024,  2025
+ 
+Bonita
+ 24
+ 2025,  2026
+ 
+Gita
+ 20
+ 2024,  2025
+ 
+Claher  Prastian
+ 6
+ 2024,  2025
+ 
+Tabel  3.1  Volume  pengajuan  kumulatif  per  surveyor.  Djadjang,  salma,  dan  Hanif  menangani  81%  dari  seluruh  volume  
+(808/995)
+ 
+konsentrasi
+ 
+beban
+ 
+kerja
+ 
+pada
+ 
+tiga
+ 
+personel.
+ 
+Karena  approved_at  100%  kosong  pada  2024,  kolom  “Avg  Pengajuan  (days)”  per  surveyor  konsisten  
+dengan
+ 
+temuan
+ 
+Bab
+ 
+1.4,
+ 
+bukan
+ 
+indikasi
+ 
+kinerja
+ 
+surveyor.
+ 
+Perbandingan
+ 
+kecepatan
+ 
+approval
+ 
+antar-surveyor
+ 
+baru
+ 
+dapat
+ 
+dilakukan
+ 
+secara
+ 
+andal
+ 
+mulai
+ 
+kohort
+ 
+2026.  
+ 
+Sumber:  Data  Mentah  UPC  PGI  (995  transaksi,  Jan  2024–Jul  2026)
+ 
+KONFIDENSIAL
+ Halaman  7  dari  15
+ 
+ 
+
+=== PAGE 8 ===
+BAB  4:  ANALISIS  NEGOSIASI  &  KINERJA  NEGOSIATOR 
+4.1  Bonita  vs  Mirza  -  Perbandingan  Terukur  (2026) 
+Bonita  dan  Mirza  tercatat  sebagai  dua  negosiator  utama  PGI  (negosiator  lain  hanya  menangani  volume  
+kecil
+ 
+atau
+ 
+tumpang
+ 
+tindih
+ 
+peran
+ 
+surveyor).
+ 
+Karena
+ 
+field
+ 
+efisiensi
+ 
+diskon
+ 
+baru
+ 
+andal
+ 
+pada
+ 
+2026
+ 
+(Bab
+ 
+1.4),
+ 
+perbandingan
+ 
+kuantitatif
+ 
+difokuskan
+ 
+pada
+ 
+kohort
+ 
+tersebut,
+ 
+diuji
+ 
+dengan
+ 
+Mann-Whitney
+ 
+U
+ 
+(non-parametrik,
+ 
+sesuai
+ 
+distribusi
+ 
+persentase
+ 
+diskon
+ 
+yang
+ 
+miring/skewed). 
+Tahun
+ Negosiator
+ n
+ 
+Avg  Durasi  Nego  (hari)
+ 
+Avg  Efisiensi  Diskon
+ 
+Median  Efisiensi  Diskon
+ 
+2025
+ Bonita
+ 72
+ 22,0
+ 0,00%
+ 0,00%
+ 
+2025
+ Mirza
+ 151
+ 21,7
+ 1,01%
+ 0,00%
+ 
+2026
+ Bonita
+ 109
+ 23,6
+ 8,23%
+ 0,00%
+ 
+2026
+ Mirza
+ 113
+ 24,2
+ 14,06%
+ 13,33%
+ 
+Tabel  4.1  Perbandingan  Bonita  vs  Mirza.  Uji  Mann-Whitney:  2025  p=0,035  (signifikan  lemah,  namun  kedua  rata-rata  
+mendekati
+ 
+nol
+ 
+dan
+ 
+tidak
+ 
+bermakna
+ 
+praktis);
+ 
+2026
+ 
+p<0,001
+ 
+(signifikan
+ 
+kuat).
+ 
+ 
+Gambar  4.1  Efisiensi  diskon  nego  Bonita  vs  Mirza,  kohort  2026  (n=222).
+ 
+Pada  2026,  rata-rata  durasi  negosiasi  Bonita  (23,6  hari)  dan  Mirza  (24,2  hari)  nyaris  identik  (selisih  0,6  
+hari),
+ 
+namun
+ 
+efisiensi
+ 
+diskon
+ 
+Mirza
+ 
+(14,1%)
+ 
+hampir
+ 
+dua
+ 
+kali
+ 
+lipat
+ 
+Bonita
+ 
+(8,2%)
+ 
+dan
+ 
+perbedaan
+ 
+ini
+ 
+signifikan
+ 
+secara
+ 
+statistik
+ 
+(p<0,001).
+ 
+Artinya
+ 
+perbedaan
+ 
+hasil
+ 
+bukan
+ 
+disebabkan
+ 
+Mirza
+ 
+“menegosiasikan
+ 
+lebih
+ 
+lama”,
+ 
+melainkan
+ 
+faktor
+ 
+lain
+ 
+kemungkinan
+ 
+pendekatan
+ 
+negosiasi,
+ 
+jenis
+ 
+properti/wilayah
+ 
+yang
+ 
+ditangani,
+ 
+atau
+ 
+leverage
+ 
+yang
+ 
+dimiliki.
+ 
+Data
+ 
+wilayah
+ 
+pada
+ 
+Bab
+ 
+5
+ 
+menunjukkan
+ 
+Mirza
+ 
+dan
+ 
+Bonita
+ 
+menangani
+ 
+sebaran
+ 
+kabupaten/kota
+ 
+yang
+ 
+berbeda
+ 
+sehingga
+ 
+efek
+ 
+wilayah
+ 
+turut
+ 
+berperan
+ 
+dan
+ 
+perlu
+ 
+dipisahkan
+ 
+sebelum
+ 
+menyimpulkan
+ 
+keunggulan
+ 
+personel
+ 
+secara
+ 
+mutlak 
+4.2  Hubungan  Durasi  Negosiasi  dan  Besaran  Diskon 
+ 
+Sumber:  Data  Mentah  UPC  PGI  (995  transaksi,  Jan  2024–Jul  2026)
+ 
+KONFIDENSIAL
+ Halaman  8  dari  15
+ 
+ 
+
+
+=== PAGE 9 ===
+Uji  korelasi  Pearson  antara  durasi  negosiasi  dan  efisiensi  diskon  (seluruh  995  transaksi)  menghasilkan  r  =  
+0,305
+ 
+(Spearman
+ 
+ρ
+ 
+=
+ 
+0,382),
+ 
+keduanya
+ 
+signifikan
+ 
+(p<0,001)
+ 
+namun
+ 
+tergolong
+ 
+korelasi
+ 
+lemah-hingga-sedang.
+ 
+Artinya
+ 
+negosiasi
+ 
+yang
+ 
+berlangsung
+ 
+lebih
+ 
+lama
+ 
+cenderung
+ 
+menghasilkan
+ 
+diskon
+ 
+sedikit
+ 
+lebih
+ 
+besar,
+ 
+tetapi
+ 
+durasi
+ 
+bukan
+ 
+prediktor
+ 
+kuat
+ 
+lebih
+ 
+dari
+ 
+85%
+ 
+variasi
+ 
+efisiensi
+ 
+diskon
+ 
+dijelaskan
+ 
+oleh
+ 
+faktor
+ 
+lain
+ 
+di
+ 
+luar
+ 
+lama
+ 
+waktu
+ 
+negosiasi
+ 
+semata
+ 
+(mis.
+ 
+wilayah,
+ 
+negosiator,
+ 
+jenis
+ 
+properti).
+ 
+Implikasi  untuk  targeyt  SLA  Negosiasi,  karena  memperpanjang  waktu  negosiasi  tidak  menjamin  diskon  
+yang
+ 
+proporsional
+ 
+lebih
+ 
+besar,
+ 
+menetapkan
+ 
+SLA
+ 
+nego
+ 
+yang
+ 
+lebih
+ 
+ketat
+ 
+(mis.
+ 
+maksimal
+ 
+17
+ 
+hari)
+ 
+berisiko
+ 
+rendah
+ 
+terhadap
+ 
+kehilangan
+ 
+potensi
+ 
+diskon
+ 
+signifikan,
+ 
+dan
+ 
+berpotensi
+ 
+mempercepat
+ 
+total
+ 
+siklus
+ 
+pembukaan
+ 
+cabang
+ 
+tanpa
+ 
+mengorbankan
+ 
+banyak
+ 
+efisiensi
+ 
+biaya
+ 
+sewa.  
+ 
+Sumber:  Data  Mentah  UPC  PGI  (995  transaksi,  Jan  2024–Jul  2026)
+ 
+KONFIDENSIAL
+ Halaman  9  dari  15
+ 
+ 
+
+=== PAGE 10 ===
+BAB  5:  PETA  GEOSPASIAL  -  SKOR  KEMUDAHAN  NEGOSIASI 
+Peta  “Kemudahan  Nego”  pada  bagian  ini  membangun  peta  secara  proporsional  dan  terdokumentasi,  
+menggunakan
+ 
+batas
+ 
+administratif
+ 
+kabupaten/kota
+ 
+dari
+ 
+berkas
+ 
+topojson
+ 
+yang
+ 
+direferensikan,
+ 
+dibatasi
+ 
+pada
+ 
+kohort
+ 
+2026
+ 
+(satu-satunya
+ 
+periode
+ 
+dengan
+ 
+data
+ 
+efisiensi
+ 
+diskon
+ 
+yang
+ 
+valid
+ 
+-
+ 
+Bab
+ 
+1.4)
+ 
+dan
+ 
+wilayah
+ 
+dengan
+ 
+minimal
+ 
+2
+ 
+transaksi. 
+5.1  Metodologi  Skor 
+Skor  Kemudahan  Nego  =  50%  ×  Skor  Kecepatan  +  50%  ×  Skor  Efisiensi  Diskon ,  masing-masing  
+dinormalisasi
+ 
+0–100
+ 
+(min-max)
+ 
+di
+ 
+antara
+ 
+seluruh
+ 
+wilayah
+ 
+yang
+ 
+memenuhi
+ 
+syarat
+ 
+data.
+ 
+Skor
+ 
+Kecepatan
+ 
+dibalik
+ 
+(durasi
+ 
+lebih
+ 
+pendek
+ 
+→
+ 
+skor
+ 
+lebih
+ 
+tinggi).
+ 
+Skor
+ 
+100
+ 
+=
+ 
+kombinasi
+ 
+tercepat
+ 
+&
+ 
+diskon
+ 
+terbesar
+ 
+relatif
+ 
+terhadap
+ 
+wilayah
+ 
+lain
+ 
+pada
+ 
+kohort
+ 
+yang
+ 
+sama;
+ 
+skor
+ 
+tidak
+ 
+dapat
+ 
+dibandingkan
+ 
+lintas
+ 
+kohort
+ 
+tahun
+ 
+lain
+ 
+karena
+ 
+keterbatasan
+ 
+data
+ 
+(Bab
+ 
+1.4).
+ 
+ 
+Peta  koroplet  skor  kemudahan  negosiasi  per  kabupaten/kota  (kohort  2026,  n=222  transaksi,  52  wilayah  memenuhi  syarat  
+minimal
+ 
+2
+ 
+transaksi)
+ 
+tersedia
+ 
+pada
+ 
+dokumen
+ 
+sumber
+ 
+(Gambar
+ 
+5.1)
+ 
+dan
+ 
+tidak
+ 
+direproduksi
+ 
+di
+ 
+sini
+ 
+karena
+ 
+memerlukan
+ 
+berkas
+ 
+geometri
+ 
+(topojson)
+ 
+yang
+ 
+tidak
+ 
+tercakup
+ 
+dalam
+ 
+data
+ 
+ringkasan
+ 
+yang
+ 
+menjadi
+ 
+rujukan
+ 
+revisi
+ 
+ini.
+ 
+Wilayah
+ 
+abu-abu
+ 
+pada
+ 
+peta
+ 
+asli:
+ 
+data
+ 
+tidak
+ 
+memenuhi
+ 
+syarat
+ 
+atau
+ 
+geometri
+ 
+tidak
+ 
+tersedia
+ 
+pada
+ 
+berkas
+ 
+topojson
+ 
+rujukan.
+ 
+5.2  Sepuluh  Wilayah  Termudah  dan  Tersulit  (2026) 
+Wilayah
+ n
+ Avg  Nego  (hari)
+ Avg  Efisiensi  Diskon
+ Skor  Kemudahan
+ 
+Kab.  Banjarnegara
+ 2
+ 22,5
+ 27,5%
+ 83,7
+ 
+Kota  Tasikmalaya
+ 2
+ 22,5
+ 22,5%
+ 74,6
+ 
+Kab.  Tabanan
+ 2
+ 20,0
+ 11,7%
+ 71,2
+ 
+Kab.  Sukabumi
+ 3
+ 21,7
+ 17,4%
+ 70,7
+ 
+Kab.  Banyumas
+ 3
+ 23,3
+ 22,9%
+ 69,9
+ 
+ 
+Wilayah
+ n
+ Avg  Nego  (hari)
+ Avg  Efisiensi  Diskon
+ Skor  Kemudahan
+ 
+Kab.  Karanganyar
+ 6
+ 27,2
+ 10,7%
+ 22,7
+ 
+Kota  Cirebon
+ 2
+ 24,5
+ 2,4%
+ 25,0
+ 
+Kab.  Grobogan
+ 2
+ 26,0
+ 8,0%
+ 25,5
+ 
+Kab.  Cianjur
+ 8
+ 25,5
+ 7,0%
+ 26,8
+ 
+ 
+Sumber:  Data  Mentah  UPC  PGI  (995  transaksi,  Jan  2024–Jul  2026)
+ 
+KONFIDENSIAL
+ Halaman  10  dari  15
+ 
+ 
+
+
+=== PAGE 11 ===
+Wilayah
+ n
+ Avg  Nego  (hari)
+ Avg  Efisiensi  Diskon
+ Skor  Kemudahan
+ 
+Kab.  Bandung  Barat
+ 3
+ 23,3
+ 0,4%
+ 29,1
+ 
+Tabel  5.1–5.2  Lima  wilayah  dengan  skor  tertinggi  (hijau)  dan  terendah  (merah),  min.  2  transaksi,  kohort  2026.
+  
+Wilayah  Perkotaan  Padat  Cenderung  Lebih  Sulit  Dinegosiasikan 
+Kota-kota  besar  berpenduduk  padat  dengan  pasar  properti  komersial  ketat  Kota  Bandung  (skor  33,3),  Kota  
+Jakarta
+ 
+Pusat
+ 
+(35,2),
+ 
+Kota
+ 
+Cilegon
+ 
+(32,8)
+ 
+konsisten
+ 
+berada
+ 
+di
+ 
+kelompok
+ 
+skor
+ 
+terendah,
+ 
+dengan
+ 
+efisiensi
+ 
+diskon
+ 
+rata-rata
+ 
+di
+ 
+bawah
+ 
+5%.
+ 
+Sebaliknya,
+ 
+kabupaten
+ 
+dengan
+ 
+pasar
+ 
+sewa
+ 
+lebih
+ 
+longgar
+ 
+(Banjarnegara,
+ 
+Tasikmalaya,
+ 
+Tabanan,
+ 
+Sukabumi,
+ 
+Banyumas)
+ 
+mencatat
+ 
+efisiensi
+ 
+diskon
+ 
+di
+ 
+atas
+ 
+17%.
+ 
+Pola
+ 
+ini
+ 
+masuk
+ 
+akal
+ 
+secara
+ 
+ekonomi
+ 
+properti
+ 
+komersial
+ 
+di
+ 
+kota
+ 
+besar
+ 
+memiliki
+ 
+banyak
+ 
+calon
+ 
+penyewa
+ 
+alternatif
+ 
+sehingga
+ 
+posisi
+ 
+tawar
+ 
+pemilik
+ 
+lebih
+ 
+kuat.
+ 
+Rekomendasi:
+ 
+tim
+ 
+ekspansi
+ 
+dapat
+ 
+memasukkan
+ 
+skor
+ 
+wilayah
+ 
+ini
+ 
+sebagai
+ 
+salah
+ 
+satu
+ 
+input
+ 
+due
+ 
+diligence
+ 
+sebelum
+ 
+menetapkan
+ 
+target
+ 
+waktu
+ 
+dan
+ 
+anggaran
+ 
+sewa
+ 
+untuk
+ 
+lokasi
+ 
+baru
+ 
+di
+ 
+kota
+ 
+besar
+ 
+ 
+Sumber:  Data  Mentah  UPC  PGI  (995  transaksi,  Jan  2024–Jul  2026)
+ 
+KONFIDENSIAL
+ Halaman  11  dari  15
+ 
+ 
+
+=== PAGE 12 ===
+BAB  6:  ANALISIS  KONTRAKTOR  &  KEPATUHAN  SLA  RENOVASI 
+6.1  Tren  Kepatuhan  SLA  Menurun  Temuan  yang  Tersembunyi   
+Laporan  menampilkan  status  “tercapai”  untuk  seluruh  baris  pada  tabel  PERFORMANCE  KONTRAKTOR  
+TAHUN
+ 
+dihitung
+ 
+per
+ 
+transaksi
+ 
+individual,
+ 
+gambarannya
+ 
+sebagai
+ 
+berikut: 
+ 
+Gambar  6.1  Tingkat  kepatuhan  SLA  renovasi  per  tahun,  dihitung  per  transaksi  individual.  Target  ideal  internal  diasumsikan  
+80%
+ 
+sebagai
+ 
+garis
+ 
+referensi.
+ 
+Kepatuhan  SLA  aktual  menurun  dari  69,5%  (2024)  menjadi  54,1%  (2026)  penurunan  15,4  poin  persentase  
+dalam
+ 
+tiga
+ 
+tahun. 
+6.2  Kepatuhan  SLA  vs  Volume  Pengerjaan  per  Kontraktor 
+ 
+Gambar  6.2  Tingkat  kepatuhan  SLA  (batang)  dan  volume  pengerjaan  (garis)  per  kontraktor,  kontraktor  dengan  minimal  5  
+pengerjaan,
+ 
+seluruh
+ 
+periode.
+ 
+ 
+Sumber:  Data  Mentah  UPC  PGI  (995  transaksi,  Jan  2024–Jul  2026)
+ 
+KONFIDENSIAL
+ Halaman  12  dari  15
+ 
+ 
+
+
+=== PAGE 13 ===
+Kontraktor
+ Jml  Pengerjaan
+ Avg  Renovasi  (hari)
+ Kepatuhan  SLA
+ 
+Sarjono
+ 246
+ 14,4
+ 89,0%
+ 
+Sendy
+ 139
+ 16,1
+ 86,3%
+ 
+Edwin
+ 173
+ 18,3
+ 72,3%
+ 
+CV.  Rizki  Mitra  Abadi
+ 182
+ 20,7
+ 50,5%
+ 
+Trimo
+ 176
+ 25,8
+ 36,9%
+ 
+Teguh  Karyanto
+ 31
+ 30,5
+ 19,4%
+ 
+CV  Cahaya  Kemakmuran  Sejahtera
+ 39
+ 23,3
+ 17,9%
+ 
+Dimas  Andri  Sulistyo
+ 6
+ 31,8
+ 0,0%
+ 
+Tabel
+ 
+6.1
+ 
+Kinerja
+ 
+kontraktor
+ 
+seluruh
+ 
+periode,
+ 
+diurutkan
+ 
+berdasarkan
+ 
+volume.
+ 
+Keterangan:
+ 
+Hijau
+ 
+=
+ 
+kepatuhan
+ 
+≥
+75%
+ 
+(baik)
+ 
+|
+ 
+Kuning
+ 
+=
+ 
+40–74%
+ 
+(perlu
+ 
+dimonitor)
+ 
+|
+ 
+Merah
+ 
+=
+ 
+<40%
+ 
+(berisiko
+ 
+tinggi).
+ 
+6.3  Pengaruh  Skala  Proyek  terhadap  Durasi  Renovasi 
+Uji  korelasi  Pearson  antara  anggaran  renovasi  (budget)  dan  durasi  renovasi  aktual  menghasilkan  r  =  0,387  
+(p<0,001)
+ 
+korelasi
+ 
+positif
+ 
+sedang.
+ 
+Lebar
+ 
+ruko
+ 
+tidak
+ 
+berkorelasi
+ 
+signifikan
+ 
+dengan
+ 
+durasi
+ 
+(r
+ 
+=
+ 
+0,040,
+ 
+p
+ 
+=
+ 
+0,21).
+ 
+Ini
+ 
+berarti
+ 
+proyek
+ 
+dengan
+ 
+anggaran
+ 
+lebih
+ 
+besar
+ 
+secara
+ 
+wajar
+ 
+membutuhkan
+ 
+waktu
+ 
+lebih
+ 
+lama
+ 
+(skala
+ 
+pekerjaan
+ 
+lebih
+ 
+besar),
+ 
+sehingga
+ 
+perbandingan
+ 
+durasi
+ 
+mentah
+ 
+antar-kontraktor
+ 
+pada
+ 
+Tabel
+ 
+6.1
+ 
+berpotensi
+ 
+bias
+ 
+apabila
+ 
+komposisi
+ 
+anggaran
+ 
+proyek
+ 
+tiap
+ 
+kontraktor
+ 
+berbeda
+ 
+jauh.
+ 
+Namun
+ 
+demikian,
+ 
+kesenjangan
+ 
+kepatuhan
+ 
+SLA
+ 
+antara
+ 
+Sarjono
+ 
+(89,0%)
+ 
+dan
+ 
+Trimo
+ 
+(36,9%)
+ 
+keduanya
+ 
+menangani
+ 
+volume
+ 
+besar
+ 
+(246
+ 
+vs
+ 
+176
+ 
+pengerjaan)
+ 
+terlalu
+ 
+lebar
+ 
+untuk
+ 
+dijelaskan
+ 
+semata
+ 
+oleh
+ 
+perbedaan
+ 
+skala
+ 
+proyek,
+ 
+dan
+ 
+lebih
+ 
+mengindikasikan
+ 
+perbedaan
+ 
+kapasitas
+ 
+eksekusi
+ 
+riil.
+ 
+Kombinasi
+ 
+volume
+ 
+tinggi
+ 
+dan
+ 
+kepatuhan
+ 
+rendah
+ 
+menjadikan
+ 
+Trimo
+ 
+sebagai
+ 
+sumber
+ 
+risiko
+ 
+operasional
+ 
+tunggal
+ 
+terbesar
+ 
+terhadap
+ 
+SLA
+ 
+renovasi
+ 
+PGI
+ 
+secara
+ 
+keseluruhan
+ 
+ 
+Sumber:  Data  Mentah  UPC  PGI  (995  transaksi,  Jan  2024–Jul  2026)
+ 
+KONFIDENSIAL
+ Halaman  13  dari  15
+ 
+ 
+
+=== PAGE 14 ===
+BAB  7:  KESIMPULAN   
+7.1  Ringkasan  Temuan 
+Proses  pembukaan  cabang  PGI  berjalan  dengan  siklus  rata-rata  68,3  hari  yang  relatif  stabil,  namun  analisis  
+mendalam
+ 
+mengungkap
+ 
+tiga
+ 
+persoalan
+ 
+yang
+ 
+tidak
+ 
+tampak
+ 
+:
+ 
+(1)
+ 
+keandalan
+ 
+data
+ 
+untuk
+ 
+sejumlah
+ 
+metrik
+ 
+kunci
+ 
+(kecepatan
+ 
+approval,
+ 
+efisiensi
+ 
+diskon)
+ 
+baru
+ 
+tercapai
+ 
+mulai
+ 
+2026,
+ 
+sehingga
+ 
+tren
+ 
+lintas-tahun
+ 
+pada
+ 
+metrik
+ 
+tersebut
+ 
+harus
+ 
+dibaca
+ 
+sebagai
+ 
+perubahan
+ 
+cakupan
+ 
+data,
+ 
+bukan
+ 
+perubahan
+ 
+kinerja;
+ 
+(2)
+ 
+kepatuhan
+ 
+SLA
+ 
+renovasi
+ 
+menurun
+ 
+konsisten
+ 
+setiap
+ 
+tahun
+ 
+ketika
+ 
+diukur
+ 
+per
+ 
+transaksi;
+ 
+dan
+ 
+(3)
+ 
+terdapat
+ 
+perbedaan
+ 
+kinerja
+ 
+yang
+ 
+signifikan
+ 
+secara
+ 
+statistik
+ 
+antar-negosiator
+ 
+dan
+ 
+antar-kontraktor. 
+ 
+ 
+Sumber:  Data  Mentah  UPC  PGI  (995  transaksi,  Jan  2024–Jul  2026)
+ 
+KONFIDENSIAL
+ Halaman  14  dari  15
+ 
+ 
+
+=== PAGE 15 ===
+PENUTUP 
+Laporan  ini  menegaskan  bahwa  proses  pembukaan  cabang  PGI  secara  umum  berjalan  pada  siklus  waktu  
+yang
+ 
+stabil,
+ 
+namun
+ 
+kualitas
+ 
+data
+ 
+pendukung
+ 
+dan
+ 
+kepatuhan
+ 
+SLA
+ 
+operasional
+ 
+memerlukan
+ 
+perhatian
+ 
+manajerial
+ 
+segera.
+ 
+Temuan
+ 
+paling
+ 
+mendasar
+ 
+adalah
+ 
+bahwa
+ 
+sejumlah
+ 
+indikator
+ 
+kinerja
+ 
+yang
+ 
+tampak
+ 
+membaik
+ 
+pada
+ 
+laporan
+ 
+sebelumnya
+ 
+khususnya
+ 
+efisiensi
+ 
+diskon
+ 
+negosiasi
+ 
+sesungguhnya
+ 
+mencerminkan
+ 
+perluasan
+ 
+cakupan
+ 
+pencatatan
+ 
+data
+ 
+pada
+ 
+2026,
+ 
+bukan
+ 
+perbaikan
+ 
+kinerja
+ 
+substantif.
+ 
+Setelah
+ 
+dikoreksi
+ 
+terhadap
+ 
+bias
+ 
+ini,
+ 
+ditemukan
+ 
+tren
+ 
+yang
+ 
+justru
+ 
+berlawanan
+ 
+arah
+ 
+pada
+ 
+dimensi
+ 
+kepatuhan
+ 
+SLA
+ 
+renovasi,
+ 
+yang
+ 
+menurun
+ 
+dari
+ 
+69,5%
+ 
+menjadi
+ 
+54,1%
+ 
+dalam
+ 
+tiga
+ 
+tahun
+ 
+terakhir. 
+Dengan  penerapan  perbaikan  tata  kelola  data,  redistribusi  beban  kerja  kontraktor  berisiko  tinggi,  dan  
+standardisasi
+ 
+praktik
+ 
+negosiasi
+ 
+terbaik
+  
+PGI
+ 
+berpotensi
+ 
+menaikkan
+ 
+kepatuhan
+ 
+SLA
+ 
+renovasi
+ 
+ke
+ 
+atas
+ 
+70%
+ 
+dan
+ 
+mempercepat
+ 
+siklus
+ 
+pembukaan
+ 
+cabang
+ 
+secara
+ 
+keseluruhan
+ 
+dalam
+ 
+dua
+ 
+hingga
+ 
+tiga
+ 
+kuartal
+ 
+ke
+ 
+depan,
+ 
+tanpa
+ 
+memerlukan
+ 
+investasi
+ 
+sistem
+ 
+baru
+ 
+yang
+ 
+signifikan. 
+ 
+Jakarta,  Agustus  2026 
+Disusun  oleh, 
+ 
+Mukhammad  Rekza  Mufti Data  Analyst Divisi  Bisnis  -  Business  Development Pusat  Gadai  Indonesia 
+ 
+Sumber:  Data  Mentah  UPC  PGI  (995  transaksi,  Jan  2024–Jul  2026)
+ 
+KONFIDENSIAL
+ Halaman  15  dari  15
+ 
+ 
+

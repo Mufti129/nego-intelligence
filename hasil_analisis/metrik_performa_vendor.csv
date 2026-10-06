@@ -1,0 +1,12 @@
+kontraktor_clean,total_unit,avg_durasi,med_durasi,avg_sla,patuh_count,total_budget,avg_budget,avg_lebar,pct_patuh,avg_overdue,kuadran
+Sarjono,254,14.303149606299213,14.0,21.405511811023622,227,31411848759,123668695.9015748,13.795669291338582,89.37007874015748,0.0,"Kuadran I: Core Champions (Volume Besar, Kepatuhan Tinggi)"
+CV. Rizki Mitra Abadi,189,20.88888888888889,21.0,21.75132275132275,93,21889013067,115814883.95238096,11.994708994708995,49.2063492063492,0.0,"Kuadran II: Zona Risiko Operasional (Volume Besar, Kepatuhan Rendah)"
+Trimo,185,27.745945945945945,24.0,22.324324324324323,64,24086650953,130198113.25945947,13.412972972972973,34.5945945945946,5.421621621621622,"Kuadran II: Zona Risiko Operasional (Volume Besar, Kepatuhan Rendah)"
+Edwin,177,18.54237288135593,18.0,21.785310734463277,129,21697270456,122583448.9039548,12.702259887005651,72.88135593220339,0.0,"Kuadran I: Core Champions (Volume Besar, Kepatuhan Tinggi)"
+Sendy,139,16.071942446043167,16.0,20.60431654676259,120,15233511590,109593608.56115107,12.374820143884891,86.33093525179856,0.0,"Kuadran I: Core Champions (Volume Besar, Kepatuhan Tinggi)"
+CV Cahaya Kemakmuran Sejahtera,40,23.325,22.0,21.925,7,5033827305,125845682.625,10.9125,17.5,1.3999999999999986,"Kuadran III: High Risk Underperformers (Volume Kecil, Kepatuhan Rendah)"
+Teguh Karyanto,32,30.84375,29.0,23.21875,6,4708621113,147144409.78125,11.415625,18.75,7.625,"Kuadran III: High Risk Underperformers (Volume Kecil, Kepatuhan Rendah)"
+Dimas Andri Sulistyo,9,30.444444444444443,28.0,26.11111111111111,1,1198253460,133139273.33333333,13.222222222222221,11.11111111111111,4.333333333333332,"Kuadran III: High Risk Underperformers (Volume Kecil, Kepatuhan Rendah)"
+I made widiantara,1,55.0,55.0,21.0,0,134040500,134040500.0,13.0,0.0,34.0,"Kuadran III: High Risk Underperformers (Volume Kecil, Kepatuhan Rendah)"
+Iyan Philo,1,98.0,98.0,20.0,0,110191750,110191750.0,6.0,0.0,78.0,"Kuadran III: High Risk Underperformers (Volume Kecil, Kepatuhan Rendah)"
+Prawiro anggono,1,33.0,33.0,20.0,0,140059000,140059000.0,15.0,0.0,13.0,"Kuadran III: High Risk Underperformers (Volume Kecil, Kepatuhan Rendah)"
