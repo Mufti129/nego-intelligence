@@ -8,6 +8,7 @@ Enterprise Decision Support System (DSS) untuk Analisis Performa Negosiasi, Geos
 Siklus Lead Time, Manajemen Risiko Vendor, dan Multi-Criteria Decision Analysis (MCDA) Auto-Routing.
 
 Author: Mukhammad Rekza Mufti (Data Analyst — Divisi Bisnis)
+Design Architecture: Enterprise Modern Responsive UI (Zero Text Overlap & High Contrast)
 ====================================================================================================
 """
 
@@ -24,7 +25,7 @@ from plotly.subplots import make_subplots
 from scipy import stats
 
 # ==============================================================================
-# 1. KONFIGURASI HALAMAN & ENTERPRISE STYLING
+# 1. KONFIGURASI HALAMAN & ENTERPRISE RESPONSIVE STYLING
 # ==============================================================================
 st.set_page_config(
     page_title="PGI Negotiation Intelligence Dashboard",
@@ -32,152 +33,201 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom Enterprise CSS Styling
+# Custom Enterprise CSS Styling (Inspired by Modern Fintech & Executive Analytics)
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
     
     html, body, [class*="css"] {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
     
-    /* Main Executive Header */
-    .main-header {
-        background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-        border: 1px solid #334155;
-        border-left: 5px solid #2563eb;
-        padding: 22px 26px;
-        border-radius: 12px;
-        color: #f8fafc;
-        margin-bottom: 24px;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+    /* Main Hero Header / Executive App Bar */
+    .executive-appbar {
+        background: linear-gradient(135deg, #1E3A8A 0%, #1D4ED8 50%, #2563EB 100%);
+        border-radius: 18px;
+        padding: 24px 28px;
+        color: #FFFFFF;
+        box-shadow: 0 10px 25px -5px rgba(30, 58, 138, 0.4);
+        margin-bottom: 22px;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.15);
     }
-    
-    .main-header h1 {
-        color: #ffffff !important;
-        font-size: 24px !important;
-        font-weight: 700 !important;
-        margin: 0 !important;
-        padding-bottom: 4px !important;
-        letter-spacing: -0.3px;
+    .executive-appbar::after {
+        content: "";
+        position: absolute;
+        top: -40px;
+        right: -40px;
+        width: 180px;
+        height: 180px;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 50%;
+        pointer-events: none;
     }
-    
-    .main-header p {
-        color: #94a3b8 !important;
-        font-size: 13px !important;
-        margin: 0 !important;
+    .appbar-title {
+        font-size: 1.65rem;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        margin: 0;
+        color: #FFFFFF !important;
+        line-height: 1.25;
+    }
+    .appbar-subtitle {
+        font-size: 0.92rem;
+        color: #E0E7FF;
+        margin-top: 6px;
         font-weight: 400;
+        line-height: 1.45;
+    }
+    .appbar-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 12px;
+    }
+    .appbar-tag-pill {
+        background: rgba(255, 255, 255, 0.16);
+        backdrop-filter: blur(8px);
+        padding: 4px 12px;
+        border-radius: 30px;
+        font-size: 0.76rem;
+        font-weight: 600;
+        color: #FFFFFF;
+        border: 1px solid rgba(255, 255, 255, 0.25);
     }
     
-    /* KPI Metric Cards */
-    .metric-card {
-        background: #1e293b;
-        border: 1px solid #334155;
-        border-radius: 10px;
-        padding: 16px 18px;
-        color: #f8fafc;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    /* Responsive Metric Card - Proportional & Zero Text Overlap */
+    .metric-card-box {
+        background: #1E293B;
+        border: 1.5px solid #334155;
+        border-radius: 14px;
+        padding: 16px 14px;
+        color: #FFFFFF;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         height: 100%;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: center;
+        min-width: 0;
+        box-sizing: border-box;
+        transition: transform 0.2s ease, border-color 0.2s ease;
     }
-    
-    .metric-label {
-        font-size: 11px;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.8px;
-        color: #94a3b8;
-        margin-bottom: 6px;
+    .metric-card-box:hover {
+        transform: translateY(-2px);
+        border-color: #38BDF8;
     }
-    
-    .metric-value {
-        font-size: 22px;
+    .metric-card-label {
+        font-size: 0.72rem;
         font-weight: 700;
-        color: #ffffff;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #94A3B8;
         margin-bottom: 4px;
+        line-height: 1.3;
     }
-    
-    .metric-sub {
-        font-size: 11px;
-        color: #38bdf8;
+    .metric-card-val {
+        font-size: 1.45rem;
+        font-weight: 800;
+        color: #FFFFFF;
+        line-height: 1.25;
+        margin-bottom: 4px;
+        word-break: normal;
+    }
+    .metric-card-sub {
+        font-size: 0.72rem;
+        color: #38BDF8;
         font-weight: 500;
+        line-height: 1.3;
     }
     
     /* Corporate Badges */
-    .badge-primary {
-        background: #1e3a8a;
-        border: 1px solid #3b82f6;
-        border-radius: 10px;
-        padding: 16px 20px;
-        color: #ffffff;
+    .hero-badge-bonita {
+        background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 60%, #3B82F6 100%);
+        border: 1.5px solid #60A5FA;
+        border-radius: 14px;
+        padding: 20px;
+        color: #FFFFFF;
+        box-shadow: 0 8px 24px -2px rgba(37, 99, 235, 0.35);
     }
     
-    .badge-success {
-        background: #064e3b;
-        border: 1px solid #10b981;
-        border-radius: 10px;
-        padding: 16px 20px;
-        color: #ffffff;
+    .hero-badge-mirza {
+        background: linear-gradient(135deg, #064E3B 0%, #059669 60%, #10B981 100%);
+        border: 1.5px solid #34D399;
+        border-radius: 14px;
+        padding: 20px;
+        color: #FFFFFF;
+        box-shadow: 0 8px 24px -2px rgba(16, 185, 129, 0.35);
     }
     
-    .badge-neutral {
-        background: #334155;
-        border: 1px solid #64748b;
-        border-radius: 10px;
-        padding: 16px 20px;
-        color: #ffffff;
+    .hero-badge-tim {
+        background: linear-gradient(135deg, #334155 0%, #475569 60%, #64748B 100%);
+        border: 1.5px solid #94A3B8;
+        border-radius: 14px;
+        padding: 20px;
+        color: #FFFFFF;
+        box-shadow: 0 8px 24px -2px rgba(100, 116, 139, 0.35);
     }
 
-    .tag-status {
-        display: inline-block;
-        font-size: 10px;
+    /* Pill Tags */
+    .chip-pill {
+        display: inline-flex;
+        align-items: center;
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 0.74rem;
         font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        padding: 3px 8px;
-        border-radius: 4px;
         margin-bottom: 8px;
     }
-    
-    .tag-blue { background: rgba(37, 99, 235, 0.2); color: #60a5fa; border: 1px solid #2563eb; }
-    .tag-green { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid #10b981; }
-    .tag-amber { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid #f59e0b; }
-    .tag-red { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid #ef4444; }
+    .chip-blue { background: rgba(37, 99, 235, 0.25); color: #60A5FA; border: 1px solid #2563EB; }
+    .chip-green { background: rgba(16, 185, 129, 0.25); color: #34D399; border: 1px solid #10B981; }
+    .chip-amber { background: rgba(245, 158, 11, 0.25); color: #FBBF24; border: 1px solid #F59E0B; }
+    .chip-red { background: rgba(239, 68, 68, 0.25); color: #F87171; border: 1px solid #EF4444; }
+    .chip-slate { background: rgba(100, 116, 139, 0.25); color: #CBD5E1; border: 1px solid #64748B; }
     
     /* Structured Containers */
-    .panel-box {
-        background: #1e293b;
+    .panel-container {
+        background: #1E293B;
+        border: 1.5px solid #334155;
+        border-radius: 14px;
+        padding: 20px;
+        margin-bottom: 16px;
+    }
+    
+    /* Insight Knowledge Box */
+    .insight-box {
+        background: #1E293B;
         border: 1px solid #334155;
-        border-radius: 10px;
-        padding: 18px 20px;
+        border-left: 5px solid #3B82F6;
+        padding: 16px 18px;
+        border-radius: 0 12px 12px 0;
         margin-bottom: 16px;
     }
 
-    /* Tabs Styling */
+    /* Tabs Customization */
     .stTabs [data-baseweb="tab-list"] {
         gap: 6px;
-        border-bottom: 1px solid #334155;
+        border-bottom: 1.5px solid #334155;
     }
 
     .stTabs [data-baseweb="tab"] {
-        border-radius: 6px 6px 0px 0px;
-        padding: 8px 16px;
+        border-radius: 8px 8px 0 0;
+        padding: 10px 18px;
         font-weight: 600;
-        font-size: 13px;
-        color: #94a3b8;
+        font-size: 0.85rem;
+        color: #94A3B8;
     }
 
     .stTabs [aria-selected="true"] {
-        color: #38bdf8 !important;
-        border-bottom: 2px solid #38bdf8 !important;
+        color: #38BDF8 !important;
+        border-bottom: 2.5px solid #38BDF8 !important;
+        background: rgba(56, 189, 248, 0.08);
     }
 </style>
 """, unsafe_allow_html=True)
 
 # ==============================================================================
-# 2. KONFIGURASI GLOBAL & DATASET LOADER
+# 2. DATASET LOADER & GLOBAL REPOSITORY
 # ==============================================================================
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_NEGO_DIR = os.path.join(BASE_DIR, "data_nego_baru")
@@ -346,7 +396,7 @@ def get_regional_statistics():
 REGIONAL_STATS, ALL_REGIONS = get_regional_statistics()
 
 # ==============================================================================
-# 4. ENGINE MCDA ROUTING & PREDICTION
+# 4. ENGINE MCDA ROUTING & PREDICTION (100% PARITAS MODEL)
 # ==============================================================================
 def match_region_name(user_input):
     if not user_input:
@@ -610,19 +660,27 @@ def execute_prediction_simulation(wilayah_input, harga_penawaran, negosiator_cho
 
 
 # ==============================================================================
-# 5. SIDEBAR NAVIGATION & ENTERPRISE CONTROLS
+# 5. SIDEBAR NAVIGATION & CORPORATE BRANDING
 # ==============================================================================
 with st.sidebar:
     st.markdown("""
-        <div style="padding: 10px 0 18px 0; border-bottom: 1px solid #334155; margin-bottom: 16px;">
-            <div style="font-size: 11px; font-weight: 700; color: #38bdf8; letter-spacing: 1px; text-transform: uppercase;">Enterprise DSS</div>
-            <div style="font-size: 18px; font-weight: 800; color: #ffffff;">PUSAT GADAI INDONESIA</div>
-            <div style="font-size: 12px; color: #94a3b8;">Sistem Analitik Negosiasi UPC</div>
+    <div style="background: #09090B; border: 1.5px solid #27272A; border-radius: 14px; padding: 14px; display: flex; align-items: center; gap: 12px; margin-bottom: 16px; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);">
+        <div style="width: 42px; height: 42px; background: #18181B; border: 1px solid #3F3F46; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="3" y="3" width="18" height="18" rx="3" stroke="#38BDF8" stroke-width="2"/>
+                <line x1="3" y1="9" x2="21" y2="9" stroke="#38BDF8" stroke-width="1.5"/>
+                <line x1="9" y1="21" x2="9" y2="9" stroke="#38BDF8" stroke-width="1.5"/>
+            </svg>
         </div>
+        <div style="min-width: 0;">
+            <div style="font-size: 1.05rem; font-weight: 800; color: #FFFFFF; letter-spacing: -0.01em; line-height: 1.25;">PGI Intelligence</div>
+            <div style="font-size: 0.72rem; color: #38BDF8; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; margin-top: 1px;">Sistem Analisis UPC</div>
+        </div>
+    </div>
     """, unsafe_allow_html=True)
 
     menu = st.radio(
-        "MODUL ANALISIS",
+        "Menu Navigasi:",
         [
             "Overview & KPI Eksekutif",
             "Smart Auto-Routing & Evaluator AI",
@@ -635,10 +693,10 @@ with st.sidebar:
     )
 
     st.markdown("---")
-    st.markdown("<div style='font-size: 12px; font-weight: 600; color: #94a3b8; margin-bottom: 8px;'>FILTER TAHUN OPERASIONAL</div>", unsafe_allow_html=True)
+    st.markdown("<div style='font-size: 0.76rem; font-weight: 700; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 8px;'>Filter Tahun Data</div>", unsafe_allow_html=True)
     
     available_years = sorted(DF_GLOBAL['Tahun'].dropna().unique().tolist()) if not DF_GLOBAL.empty else [2024, 2025, 2026]
-    selected_year = st.selectbox("Periode Data:", ["Semua Tahun"] + [str(y) for y in available_years], index=len(available_years), label_visibility="collapsed")
+    selected_year = st.selectbox("Pilih Periode:", ["Semua Tahun"] + [str(y) for y in available_years], index=len(available_years), label_visibility="collapsed")
     
     if selected_year == "Semua Tahun":
         DF_ACTIVE = DF_GLOBAL.copy()
@@ -647,24 +705,30 @@ with st.sidebar:
 
     st.markdown("---")
     st.markdown("""
-        <div style="background: #0f172a; padding: 12px 14px; border-radius: 8px; border: 1px solid #334155;">
-            <div style="font-size: 11px; color: #94a3b8; line-height: 1.5;">
-                <b style="color: #f8fafc;">Status Sistem:</b> Produksi<br>
-                <b style="color: #f8fafc;">Basis Data:</b> 1.039 Titik Cabang<br>
-                <b style="color: #f8fafc;">Standar SLA:</b> 17.0 Hari Kerja
-            </div>
+    <div style="background: #09090B; border: 1px solid #27272A; border-left: 4px solid #2563EB; border-radius: 10px; padding: 12px 14px;">
+        <div style="font-size: 0.76rem; color: #94A3B8; line-height: 1.5;">
+            • <b style="color: #F8FAFC;">Database:</b> 1.039 Cabang (2024–2026)<br>
+            • <b style="color: #F8FAFC;">SLA Standard:</b> 17.0 Hari Kerja<br>
+            • <b style="color: #F8FAFC;">Lead Time:</b> ~58 Hari (Pasca-Appr)
         </div>
+    </div>
     """, unsafe_allow_html=True)
 
 
 # ==============================================================================
-# 6. HEADER UTAMA
+# 6. MAIN EXECUTIVE HEADER (APPBAR STYLE)
 # ==============================================================================
 st.markdown("""
-    <div class="main-header">
-        <h1>PUSAT GADAI INDONESIA — NEGOTIATION INTELLIGENCE</h1>
-        <p>Sistem Terpadu Optimasi Negosiasi Ruko, Evaluasi Kinerja Regional & Penugasan Berbasis AI Multi-Criteria Decision Analysis (MCDA)</p>
+<div class="executive-appbar">
+    <div class="appbar-title">PUSAT GADAI INDONESIA — NEGOTIATION INTELLIGENCE</div>
+    <div class="appbar-subtitle">Sistem Terpadu Evaluasi Kinerja Negosiasi Ruko, Dekomposisi Lead Time & Decision Support System (MCDA Auto-Routing)</div>
+    <div class="appbar-tags">
+        <span class="appbar-tag-pill">Multi-Criteria Decision Analysis</span>
+        <span class="appbar-tag-pill">1.039 Database Cabang</span>
+        <span class="appbar-tag-pill">Lead Time 58.4 Hari</span>
+        <span class="appbar-tag-pill">Yield Saving Rp 2,13 Miliar</span>
     </div>
+</div>
 """, unsafe_allow_html=True)
 
 
@@ -672,7 +736,7 @@ st.markdown("""
 # MODUL 1: OVERVIEW & KPI EKSEKUTIF
 # ==============================================================================
 if menu == "Overview & KPI Eksekutif":
-    st.markdown("##### Ringkasan Eksekutif & Key Performance Indicators (KPI)")
+    st.markdown("<div style='font-size: 1.1rem; font-weight: 700; color: #FFFFFF; margin-bottom: 12px;'>Ringkasan Eksekutif & Key Performance Indicators (KPI)</div>", unsafe_allow_html=True)
     
     tot_db = len(DF_GLOBAL)
     tot_active = len(DF_ACTIVE)
@@ -683,48 +747,48 @@ if menu == "Overview & KPI Eksekutif":
     c1, c2, c3, c4, c5 = st.columns(5)
     with c1:
         st.markdown(f"""
-            <div class="metric-card">
-                <div class="metric-label">Volume Realisasi</div>
-                <div class="metric-value">{tot_active:,} <span style="font-size: 13px; font-weight: 500; color: #94a3b8;">Deal</span></div>
-                <div class="metric-sub">Database: {tot_db:,} Cabang</div>
-            </div>
+        <div class="metric-card-box">
+            <div class="metric-card-label">Volume Realisasi</div>
+            <div class="metric-card-val">{tot_active:,} <span style="font-size: 0.85rem; font-weight: 600; color: #94A3B8;">Deal</span></div>
+            <div class="metric-card-sub">Database: {tot_db:,} Cabang</div>
+        </div>
         """, unsafe_allow_html=True)
     with c2:
         st.markdown(f"""
-            <div class="metric-card">
-                <div class="metric-label">Total Efisiensi Biaya</div>
-                <div class="metric-value" style="color: #34d399;">{rupiah(tot_saving)}</div>
-                <div class="metric-sub">Akumulasi Diskon Riil</div>
-            </div>
+        <div class="metric-card-box">
+            <div class="metric-card-label">Total Efisiensi Biaya</div>
+            <div class="metric-card-val" style="color: #34D399;">{rupiah(tot_saving)}</div>
+            <div class="metric-card-sub">Akumulasi Diskon Riil</div>
+        </div>
         """, unsafe_allow_html=True)
     with c3:
         st.markdown(f"""
-            <div class="metric-card">
-                <div class="metric-label">Rata-Rata Diskon</div>
-                <div class="metric-value" style="color: #38bdf8;">{avg_diskon:.2f}%</div>
-                <div class="metric-sub">Target Direksi: ≥ 15.0%</div>
-            </div>
+        <div class="metric-card-box">
+            <div class="metric-card-label">Rata-Rata Diskon</div>
+            <div class="metric-card-val" style="color: #38BDF8;">{avg_diskon:.2f}%</div>
+            <div class="metric-card-sub">Target Direksi: ≥ 15.0%</div>
+        </div>
         """, unsafe_allow_html=True)
     with c4:
         st.markdown(f"""
-            <div class="metric-card">
-                <div class="metric-label">Rata-Rata Durasi Nego</div>
-                <div class="metric-value" style="color: #fbbf24;">{avg_durasi:.1f} <span style="font-size: 13px; font-weight: 500; color: #94a3b8;">Hari</span></div>
-                <div class="metric-sub">Batas SLA: ≤ 17.0 Hari</div>
-            </div>
+        <div class="metric-card-box">
+            <div class="metric-card-label">Rata-Rata Durasi</div>
+            <div class="metric-card-val" style="color: #FBBF24;">{avg_durasi:.1f} <span style="font-size: 0.85rem; font-weight: 600; color: #94A3B8;">Hari</span></div>
+            <div class="metric-card-sub">Batas SLA: ≤ 17.0 Hari</div>
+        </div>
         """, unsafe_allow_html=True)
     with c5:
         st.markdown(f"""
-            <div class="metric-card">
-                <div class="metric-label">Harmonisasi Lead Time</div>
-                <div class="metric-value" style="color: #c084fc;">58.7 <span style="font-size: 13px; font-weight: 500; color: #94a3b8;">Hari</span></div>
-                <div class="metric-sub">Efisiensi Siklus Cabang</div>
-            </div>
+        <div class="metric-card-box">
+            <div class="metric-card-label">Harmonisasi Lead Time</div>
+            <div class="metric-card-val" style="color: #C084FC;">58.4 <span style="font-size: 0.85rem; font-weight: 600; color: #94A3B8;">Hari</span></div>
+            <div class="metric-card-sub">Pasca-Approval (~58 Hari)</div>
+        </div>
         """, unsafe_allow_html=True)
 
     st.markdown("<br>", unsafe_allow_html=True)
 
-    st.markdown("##### Evaluasi Komparatif Kinerja Negosiator")
+    st.markdown("<div style='font-size: 1.05rem; font-weight: 700; color: #FFFFFF; margin-bottom: 12px;'>Evaluasi Komparatif Kinerja Tim Negosiator</div>", unsafe_allow_html=True)
     col_bonita, col_mirza, col_lain = st.columns(3)
     
     df_bonita = DF_ACTIVE[DF_ACTIVE['negosiator'] == 'Bonita']
@@ -733,96 +797,96 @@ if menu == "Overview & KPI Eksekutif":
     
     with col_bonita:
         st.markdown(f"""
-            <div class="metric-card" style="border-left: 3px solid #3b82f6;">
-                <div class="tag-status tag-blue">High-Value Specialist</div>
-                <div style="font-size: 16px; font-weight: 700; color: #ffffff; margin-bottom: 12px;">BONITA</div>
-                <div style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 13px;">
-                    <span style="color: #94a3b8;">Volume Deal:</span>
-                    <b style="color: #f8fafc;">{len(df_bonita)} Deal</b>
-                </div>
-                <div style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 13px;">
-                    <span style="color: #94a3b8;">Total Saving:</span>
-                    <b style="color: #34d399;">{rupiah(df_bonita['saving_rp'].sum())}</b>
-                </div>
-                <div style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 13px;">
-                    <span style="color: #94a3b8;">Rata-rata Diskon:</span>
-                    <b style="color: #38bdf8;">{df_bonita['diskon_pct'].mean():.2f}%</b>
-                </div>
-                <div style="display: flex; justify-content: space-between; font-size: 13px;">
-                    <span style="color: #94a3b8;">Rata-rata Durasi:</span>
-                    <b style="color: #fbbf24;">{df_bonita['durasi_hari'].mean():.1f} Hari</b>
-                </div>
+        <div class="panel-container" style="border-left: 4px solid #3B82F6;">
+            <div class="chip-pill chip-blue">High-Value Specialist</div>
+            <div style="font-size: 1.15rem; font-weight: 800; color: #FFFFFF; margin-bottom: 10px;">BONITA</div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 0.86rem;">
+                <span style="color: #94A3B8;">Volume Deal:</span>
+                <b style="color: #F8FAFC;">{len(df_bonita)} Deal</b>
             </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 0.86rem;">
+                <span style="color: #94A3B8;">Total Saving:</span>
+                <b style="color: #34D399;">{rupiah(df_bonita['saving_rp'].sum())}</b>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 0.86rem;">
+                <span style="color: #94A3B8;">Rata-rata Diskon:</span>
+                <b style="color: #38BDF8;">{df_bonita['diskon_pct'].mean():.2f}%</b>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 0.86rem;">
+                <span style="color: #94A3B8;">Rata-rata Durasi:</span>
+                <b style="color: #FBBF24;">{df_bonita['durasi_hari'].mean():.1f} Hari</b>
+            </div>
+        </div>
         """, unsafe_allow_html=True)
 
     with col_mirza:
         st.markdown(f"""
-            <div class="metric-card" style="border-left: 3px solid #10b981;">
-                <div class="tag-status tag-green">Speed & Volume Specialist</div>
-                <div style="font-size: 16px; font-weight: 700; color: #ffffff; margin-bottom: 12px;">MIRZA</div>
-                <div style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 13px;">
-                    <span style="color: #94a3b8;">Volume Deal:</span>
-                    <b style="color: #f8fafc;">{len(df_mirza)} Deal</b>
-                </div>
-                <div style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 13px;">
-                    <span style="color: #94a3b8;">Total Saving:</span>
-                    <b style="color: #34d399;">{rupiah(df_mirza['saving_rp'].sum())}</b>
-                </div>
-                <div style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 13px;">
-                    <span style="color: #94a3b8;">Rata-rata Diskon:</span>
-                    <b style="color: #38bdf8;">{df_mirza['diskon_pct'].mean():.2f}%</b>
-                </div>
-                <div style="display: flex; justify-content: space-between; font-size: 13px;">
-                    <span style="color: #94a3b8;">Rata-rata Durasi:</span>
-                    <b style="color: #fbbf24;">{df_mirza['durasi_hari'].mean():.1f} Hari</b>
-                </div>
+        <div class="panel-container" style="border-left: 4px solid #10B981;">
+            <div class="chip-pill chip-green">Speed & Volume Specialist</div>
+            <div style="font-size: 1.15rem; font-weight: 800; color: #FFFFFF; margin-bottom: 10px;">MIRZA</div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 0.86rem;">
+                <span style="color: #94A3B8;">Volume Deal:</span>
+                <b style="color: #F8FAFC;">{len(df_mirza)} Deal</b>
             </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 0.86rem;">
+                <span style="color: #94A3B8;">Total Saving:</span>
+                <b style="color: #34D399;">{rupiah(df_mirza['saving_rp'].sum())}</b>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 0.86rem;">
+                <span style="color: #94A3B8;">Rata-rata Diskon:</span>
+                <b style="color: #38BDF8;">{df_mirza['diskon_pct'].mean():.2f}%</b>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 0.86rem;">
+                <span style="color: #94A3B8;">Rata-rata Durasi:</span>
+                <b style="color: #FBBF24;">{df_mirza['durasi_hari'].mean():.1f} Hari</b>
+            </div>
+        </div>
         """, unsafe_allow_html=True)
 
     with col_lain:
         st.markdown(f"""
-            <div class="metric-card" style="border-left: 3px solid #64748b;">
-                <div class="tag-status tag-neutral" style="background: rgba(100, 116, 139, 0.2); color: #cbd5e1; border: 1px solid #64748b;">Surveyor & Lapangan</div>
-                <div style="font-size: 16px; font-weight: 700; color: #ffffff; margin-bottom: 12px;">TIM PENDAMPING</div>
-                <div style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 13px;">
-                    <span style="color: #94a3b8;">Volume Deal:</span>
-                    <b style="color: #f8fafc;">{len(df_lain)} Deal</b>
-                </div>
-                <div style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 13px;">
-                    <span style="color: #94a3b8;">Total Saving:</span>
-                    <b style="color: #34d399;">{rupiah(df_lain['saving_rp'].sum())}</b>
-                </div>
-                <div style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 13px;">
-                    <span style="color: #94a3b8;">Rata-rata Diskon:</span>
-                    <b style="color: #38bdf8;">{df_lain['diskon_pct'].mean():.2f}%</b>
-                </div>
-                <div style="display: flex; justify-content: space-between; font-size: 13px;">
-                    <span style="color: #94a3b8;">Rata-rata Durasi:</span>
-                    <b style="color: #fbbf24;">{df_lain['durasi_hari'].mean():.1f} Hari</b>
-                </div>
+        <div class="panel-container" style="border-left: 4px solid #64748B;">
+            <div class="chip-pill chip-slate">Surveyor & Lapangan</div>
+            <div style="font-size: 1.15rem; font-weight: 800; color: #FFFFFF; margin-bottom: 10px;">TIM PENDAMPING</div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 0.86rem;">
+                <span style="color: #94A3B8;">Volume Deal:</span>
+                <b style="color: #F8FAFC;">{len(df_lain)} Deal</b>
             </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 0.86rem;">
+                <span style="color: #94A3B8;">Total Saving:</span>
+                <b style="color: #34D399;">{rupiah(df_lain['saving_rp'].sum())}</b>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 0.86rem;">
+                <span style="color: #94A3B8;">Rata-rata Diskon:</span>
+                <b style="color: #38BDF8;">{df_lain['diskon_pct'].mean():.2f}%</b>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 0.86rem;">
+                <span style="color: #94A3B8;">Rata-rata Durasi:</span>
+                <b style="color: #FBBF24;">{df_lain['durasi_hari'].mean():.1f} Hari</b>
+            </div>
+        </div>
         """, unsafe_allow_html=True)
 
     st.markdown("<br>", unsafe_allow_html=True)
 
     c_chart1, c_chart2 = st.columns(2)
     with c_chart1:
-        st.markdown("<div style='font-size: 14px; font-weight: 600; color: #f8fafc; margin-bottom: 10px;'>Distribusi Diskon (%) per Negosiator</div>", unsafe_allow_html=True)
+        st.markdown("<div style='font-size: 0.92rem; font-weight: 700; color: #F8FAFC; margin-bottom: 8px;'>Distribusi Diskon (%) per Negosiator</div>", unsafe_allow_html=True)
         fig_box = px.box(
             DF_ACTIVE[DF_ACTIVE['negosiator'].isin(['Bonita', 'Mirza', 'Tim Surveyor'])],
             x='negosiator',
             y='diskon_pct',
             color='negosiator',
-            color_discrete_map={'Bonita': '#3b82f6', 'Mirza': '#10b981', 'Tim Surveyor': '#64748b'},
+            color_discrete_map={'Bonita': '#3B82F6', 'Mirza': '#10B981', 'Tim Surveyor': '#64748B'},
             points="all",
             labels={'negosiator': 'Negosiator', 'diskon_pct': 'Efisiensi Diskon (%)'},
             template="plotly_dark"
         )
-        fig_box.update_layout(showlegend=False, margin=dict(l=20, r=20, t=20, b=20), height=320, plot_bgcolor='#1e293b', paper_bgcolor='#1e293b')
+        fig_box.update_layout(showlegend=False, margin=dict(l=15, r=15, t=15, b=15), height=320, plot_bgcolor='#1E293B', paper_bgcolor='#1E293B')
         st.plotly_chart(fig_box, use_container_width=True)
 
     with c_chart2:
-        st.markdown("<div style='font-size: 14px; font-weight: 600; color: #f8fafc; margin-bottom: 10px;'>Harga Awal Penawaran vs Harga Deal Final (Juta Rp)</div>", unsafe_allow_html=True)
+        st.markdown("<div style='font-size: 0.92rem; font-weight: 700; color: #F8FAFC; margin-bottom: 8px;'>Harga Awal Penawaran vs Harga Deal Final (Juta Rp)</div>", unsafe_allow_html=True)
         sample_df = DF_ACTIVE[(DF_ACTIVE['harga_awal'] > 0) & (DF_ACTIVE['harga_final'] > 0)].copy()
         sample_df['harga_awal_jt'] = sample_df['harga_awal'] / 1e6
         sample_df['harga_final_jt'] = sample_df['harga_final'] / 1e6
@@ -834,11 +898,11 @@ if menu == "Overview & KPI Eksekutif":
             color='negosiator',
             size='saving_rp',
             hover_data=['wilayah', 'diskon_pct'],
-            color_discrete_map={'Bonita': '#3b82f6', 'Mirza': '#10b981'},
+            color_discrete_map={'Bonita': '#3B82F6', 'Mirza': '#10B981'},
             labels={'harga_awal_jt': 'Harga Awal (Juta Rp)', 'harga_final_jt': 'Harga Deal (Juta Rp)'},
             template="plotly_dark"
         )
-        fig_scat.update_layout(margin=dict(l=20, r=20, t=20, b=20), height=320, plot_bgcolor='#1e293b', paper_bgcolor='#1e293b')
+        fig_scat.update_layout(margin=dict(l=15, r=15, t=15, b=15), height=320, plot_bgcolor='#1E293B', paper_bgcolor='#1E293B')
         st.plotly_chart(fig_scat, use_container_width=True)
 
 
@@ -846,22 +910,22 @@ if menu == "Overview & KPI Eksekutif":
 # MODUL 2: SMART AUTO-ROUTING & EVALUATOR AI
 # ==============================================================================
 elif menu == "Smart Auto-Routing & Evaluator AI":
-    st.markdown("##### Decision Support System: Evaluasi & Penugasan Negosiator Berbasis AI/MCDA")
-    st.markdown("Sistem objektif untuk mengoptimalkan penugasan calon cabang baru berdasarkan analisis beban kerja, keunggulan regional, nilai ruko, dan kecepatan penutupan.")
+    st.markdown("<div style='font-size: 1.1rem; font-weight: 700; color: #FFFFFF; margin-bottom: 4px;'>Decision Support System: Evaluasi & Penugasan Negosiator Berbasis AI/MCDA</div>", unsafe_allow_html=True)
+    st.markdown("<div style='font-size: 0.86rem; color: #94A3B8; margin-bottom: 16px;'>Algoritma Multi-Criteria Decision Analysis (MCDA) mengoptimalkan penugasan calon ruko baru berdasarkan keseimbangan beban kerja, keunggulan regional, nilai tiket sewa, dan target SLA.</div>", unsafe_allow_html=True)
     
     tab_routing, tab_pred = st.tabs(["Auto-Routing Penugasan (MCDA)", "Estimator Diskon & Indeks Kemudahan"])
     
     with tab_routing:
-        col_input, col_result = st.columns([1, 1.2])
+        col_input, col_result = st.columns([1, 1.25])
         
         with col_input:
             st.markdown("""
-                <div class="panel-box">
-                    <div style="font-size: 13px; font-weight: 700; color: #38bdf8; text-transform: uppercase; margin-bottom: 12px;">Parameter Calon Gerai</div>
+            <div class="panel-container">
+                <div style="font-size: 0.82rem; font-weight: 800; color: #38BDF8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px;">Parameter Calon Gerai</div>
             """, unsafe_allow_html=True)
             
             sim_wilayah = st.selectbox(
-                "Wilayah / Kota:",
+                "Wilayah / Kota Ruko:",
                 options=["KOTA BANDUNG", "KOTA JAKARTA SELATAN", "KAB. BEKASI", "KAB. BREBES", "KOTA SURABAYA", "KAB. TANGERANG", "KOTA SEMARANG", "KAB. KARAWANG", "KOTA DEPOK"] + [w for w in ALL_REGIONS if w not in ["KOTA BANDUNG", "KAB. BEKASI"]],
                 index=0,
                 key="sb_wil_routing"
@@ -878,7 +942,7 @@ elif menu == "Smart Auto-Routing & Evaluator AI":
             )
             st.caption(f"Terbaca: **{rupiah_exact(sim_harga)}** ({rupiah(sim_harga)})")
             
-            st.markdown("<div style='margin-top: 14px; font-size: 12px; font-weight: 600; color: #94a3b8;'>Status Beban Kerja Aktif (Maks: 15 Proyek)</div>", unsafe_allow_html=True)
+            st.markdown("<div style='margin-top: 14px; font-size: 0.80rem; font-weight: 700; color: #94A3B8; text-transform: uppercase;'>Status Beban Kerja Aktif (Maks: 15 Proyek)</div>", unsafe_allow_html=True)
             
             c_b_load, c_m_load = st.columns(2)
             with c_b_load:
@@ -892,38 +956,56 @@ elif menu == "Smart Auto-Routing & Evaluator AI":
         
         with col_result:
             assigned_name = res['assigned']
-            badge_class = "badge-primary" if "BONITA" in assigned_name else ("badge-success" if "MIRZA" in assigned_name else "badge-neutral")
+            badge_class = "hero-badge-bonita" if "BONITA" in assigned_name else ("hero-badge-mirza" if "MIRZA" in assigned_name else "hero-badge-tim")
             
             st.markdown(f"""
-                <div class="{badge_class}">
-                    <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; opacity: 0.9;">Rekomendasi Penugasan Resmi</div>
-                    <div style="font-size: 22px; font-weight: 800; margin: 4px 0 8px 0; color: #ffffff;">{assigned_name}</div>
-                    <div style="font-size: 13px; line-height: 1.5; color: #f1f5f9;">
-                        <b>Rasional AI:</b> {res['reason']}
-                    </div>
+            <div class="{badge_class}">
+                <div style="font-size: 0.74rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.9;">Rekomendasi Penugasan Resmi AI</div>
+                <div style="font-size: 1.55rem; font-weight: 800; margin: 4px 0 8px 0; color: #FFFFFF;">{assigned_name}</div>
+                <div style="font-size: 0.86rem; line-height: 1.5; color: #F1F5F9;">
+                    <b>Rasional AI:</b> {res['reason']}
                 </div>
+            </div>
             """, unsafe_allow_html=True)
             
             st.markdown("<br>", unsafe_allow_html=True)
             
             p1, p2, p3 = st.columns(3)
             with p1:
-                st.metric("Potensi Saving", res['potensi_penghematan_fmt'], f"{res['est_diskon_pct']:.2f}% Target Diskon")
+                st.markdown(f"""
+                <div class="metric-card-box">
+                    <div class="metric-card-label">Potensi Saving</div>
+                    <div class="metric-card-val" style="color: #34D399;">{res['potensi_penghematan_fmt']}</div>
+                    <div class="metric-card-sub">Diskon {res['est_diskon_pct']:.2f}%</div>
+                </div>
+                """, unsafe_allow_html=True)
             with p2:
-                st.metric("Target Harga Net", res['target_harga_net_fmt'], f"-{res['potensi_penghematan_fmt']}")
+                st.markdown(f"""
+                <div class="metric-card-box">
+                    <div class="metric-card-label">Target Harga Net</div>
+                    <div class="metric-card-val" style="color: #38BDF8;">{res['target_harga_net_fmt']}</div>
+                    <div class="metric-card-sub">Harga Deal Optimal</div>
+                </div>
+                """, unsafe_allow_html=True)
             with p3:
-                st.metric("Estimasi Durasi", f"{res['est_durasi_hari']:.1f} Hari", res['sla_status'])
+                st.markdown(f"""
+                <div class="metric-card-box">
+                    <div class="metric-card-label">Estimasi Durasi</div>
+                    <div class="metric-card-val" style="color: #FBBF24;">{res['est_durasi_hari']:.1f} <span style="font-size: 0.8rem; color: #94A3B8;">Hari</span></div>
+                    <div class="metric-card-sub">{res['sla_status']}</div>
+                </div>
+                """, unsafe_allow_html=True)
 
             st.markdown("<br>", unsafe_allow_html=True)
             
             st.markdown(f"""
-                <div style="background: #1e293b; border-radius: 8px; padding: 14px; border: 1px solid #334155;">
-                    <div style="font-size: 11px; font-weight: 700; color: #38bdf8; text-transform: uppercase; margin-bottom: 8px;">Skor Komposit MCDA (Bobot: Beban 45% | Regional 25% | Nilai 15% | SLA 15%)</div>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 13px;">
-                        <div>Skor Bonita: <b style="color: #60a5fa; font-size: 15px;">{res['scores']['bonita']}</b> / 100</div>
-                        <div>Skor Mirza: <b style="color: #34d399; font-size: 15px;">{res['scores']['mirza']}</b> / 100</div>
-                    </div>
+            <div style="background: #1E293B; border-radius: 12px; padding: 14px 16px; border: 1.5px solid #334155;">
+                <div style="font-size: 0.74rem; font-weight: 700; color: #38BDF8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">Skor Komposit MCDA (Beban 45% | Regional 25% | Nilai 15% | SLA 15%)</div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 0.88rem;">
+                    <div>Skor Bonita: <b style="color: #60A5FA; font-size: 1.05rem;">{res['scores']['bonita']}</b> / 100</div>
+                    <div>Skor Mirza: <b style="color: #34D399; font-size: 1.05rem;">{res['scores']['mirza']}</b> / 100</div>
                 </div>
+            </div>
             """, unsafe_allow_html=True)
 
             radar_cats = ['Kapasitas Beban', 'Rekam Jejak Wilayah', 'Afinitas Nilai Ruko', 'Kecepatan SLA']
@@ -937,15 +1019,15 @@ elif menu == "Smart Auto-Routing & Evaluator AI":
             sla_m_val = 95.0
             
             fig_rad = go.Figure()
-            fig_rad.add_trace(go.Scatterpolar(r=[cap_b_val, reg_b_val, val_b_val, sla_b_val], theta=radar_cats, fill='toself', name='Bonita', line_color='#3b82f6'))
-            fig_rad.add_trace(go.Scatterpolar(r=[cap_m_val, reg_m_val, val_m_val, sla_m_val], theta=radar_cats, fill='toself', name='Mirza', line_color='#10b981'))
-            fig_rad.update_layout(polar=dict(radialaxis=dict(visible=True, range=[0, 100])), showlegend=True, template="plotly_dark", margin=dict(l=30, r=30, t=10, b=10), height=230, paper_bgcolor='#1e293b')
+            fig_rad.add_trace(go.Scatterpolar(r=[cap_b_val, reg_b_val, val_b_val, sla_b_val], theta=radar_cats, fill='toself', name='Bonita', line_color='#3B82F6'))
+            fig_rad.add_trace(go.Scatterpolar(r=[cap_m_val, reg_m_val, val_m_val, sla_m_val], theta=radar_cats, fill='toself', name='Mirza', line_color='#10B981'))
+            fig_rad.update_layout(polar=dict(radialaxis=dict(visible=True, range=[0, 100])), showlegend=True, template="plotly_dark", margin=dict(l=25, r=25, t=10, b=10), height=230, paper_bgcolor='#1E293B')
             st.plotly_chart(fig_rad, use_container_width=True)
 
     with tab_pred:
-        st.markdown("<div style='font-size: 14px; font-weight: 600; color: #f8fafc; margin-bottom: 12px;'>Estimasi Target Diskon & Klasifikasi Kemudahan Pasar</div>", unsafe_allow_html=True)
+        st.markdown("<div style='font-size: 0.95rem; font-weight: 700; color: #F8FAFC; margin-bottom: 12px;'>Estimasi Target Diskon & Klasifikasi Kemudahan Pasar</div>", unsafe_allow_html=True)
         
-        c_p_in, c_p_out = st.columns([1, 1.2])
+        c_p_in, c_p_out = st.columns([1, 1.25])
         with c_p_in:
             p_wil = st.selectbox("Wilayah Evaluasi:", options=ALL_REGIONS, index=0, key="sb_wil_pred")
             p_harga = st.number_input("Harga Penawaran Ruko (Rp):", min_value=5_000_000, max_value=500_000_000, value=75_000_000, step=5_000_000, key="num_harga_pred")
@@ -956,18 +1038,18 @@ elif menu == "Smart Auto-Routing & Evaluator AI":
 
         with c_p_out:
             st.markdown(f"""
-                <div class="metric-card" style="border-left: 3px solid #38bdf8;">
-                    <div style="font-size: 16px; font-weight: 700; color: #ffffff; margin-bottom: 4px;">Hasil Estimasi: {pred_res['wilayah_official']}</div>
-                    <div style="font-size: 12px; color: #94a3b8; margin-bottom: 14px;">Basis Data: {pred_res['basis_data']}</div>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 13px;">
-                        <div>Target Diskon Maksimal: <b style="color: #34d399;">{pred_res['target_diskon_pct']:.2f}%</b></div>
-                        <div>Potensi Penghematan: <b style="color: #34d399;">{pred_res['potensi_penghematan_fmt']}</b></div>
-                        <div>Estimasi Durasi: <b>{pred_res['est_durasi_hari']:.1f} Hari</b></div>
-                        <div>Target Harga Net: <b>{pred_res['target_harga_net_fmt']}</b></div>
-                        <div>Indeks Kemudahan: <b style="color: #fbbf24;">{pred_res['skor_komposit']:.1f} / 100</b></div>
-                        <div>Kategori Pasar: <b style="color: #38bdf8;">{pred_res['kategori_kemudahan']}</b></div>
-                    </div>
+            <div class="panel-container" style="border-left: 4px solid #38BDF8;">
+                <div style="font-size: 1.15rem; font-weight: 800; color: #FFFFFF; margin-bottom: 2px;">Hasil Estimasi: {pred_res['wilayah_official']}</div>
+                <div style="font-size: 0.78rem; color: #94A3B8; margin-bottom: 14px;">Basis Data: {pred_res['basis_data']}</div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 0.88rem;">
+                    <div>Target Diskon Maksimal: <b style="color: #34D399;">{pred_res['target_diskon_pct']:.2f}%</b></div>
+                    <div>Potensi Penghematan: <b style="color: #34D399;">{pred_res['potensi_penghematan_fmt']}</b></div>
+                    <div>Estimasi Durasi: <b>{pred_res['est_durasi_hari']:.1f} Hari</b></div>
+                    <div>Target Harga Net: <b>{pred_res['target_harga_net_fmt']}</b></div>
+                    <div>Indeks Kemudahan: <b style="color: #FBBF24;">{pred_res['skor_komposit']:.1f} / 100</b></div>
+                    <div>Kategori Pasar: <b style="color: #38BDF8;">{pred_res['kategori_kemudahan']}</b></div>
                 </div>
+            </div>
             """, unsafe_allow_html=True)
 
 
@@ -975,25 +1057,49 @@ elif menu == "Smart Auto-Routing & Evaluator AI":
 # MODUL 3: GEOSPATIAL & ANALISIS REGIONAL
 # ==============================================================================
 elif menu == "Geospatial & Analisis Regional":
-    st.markdown("##### Pemetaan Spasial Kemudahan Negosiasi Wilayah")
-    st.markdown("Klasifikasi efisiensi yield diskon dan kecepatan durasi negosiasi di seluruh Kabupaten/Kota di Indonesia.")
+    st.markdown("<div style='font-size: 1.1rem; font-weight: 700; color: #FFFFFF; margin-bottom: 4px;'>Pemetaan Spasial Kemudahan Negosiasi Wilayah</div>", unsafe_allow_html=True)
+    st.markdown("<div style='font-size: 0.86rem; color: #94A3B8; margin-bottom: 16px;'>Klasifikasi efisiensi yield diskon dan kecepatan durasi negosiasi di seluruh Kabupaten/Kota di Indonesia.</div>", unsafe_allow_html=True)
     
     if not REGIONAL_STATS.empty:
         c_kategori_sum = REGIONAL_STATS['kategori'].value_counts()
         
         c_g1, c_g2, c_g3, c_g4 = st.columns(4)
         with c_g1:
-            st.metric("Total Wilayah", f"{len(REGIONAL_STATS)} Wilayah")
+            st.markdown(f"""
+            <div class="metric-card-box">
+                <div class="metric-card-label">Total Wilayah</div>
+                <div class="metric-card-val">{len(REGIONAL_STATS)} <span style="font-size: 0.85rem; color: #94A3B8;">Kota/Kab</span></div>
+                <div class="metric-card-sub">Cakupan Nasional</div>
+            </div>
+            """, unsafe_allow_html=True)
         with c_g2:
-            st.metric("Kategori Sangat Mudah", f"{c_kategori_sum.get('Sangat Mudah', 0)} Wilayah", "Yield Diskon Tinggi")
+            st.markdown(f"""
+            <div class="metric-card-box">
+                <div class="metric-card-label">Sangat Mudah</div>
+                <div class="metric-card-val" style="color: #34D399;">{c_kategori_sum.get('Sangat Mudah', 0)} <span style="font-size: 0.85rem; color: #94A3B8;">Wilayah</span></div>
+                <div class="metric-card-sub">Yield Diskon Tinggi</div>
+            </div>
+            """, unsafe_allow_html=True)
         with c_g3:
-            st.metric("Kategori Moderat", f"{c_kategori_sum.get('Moderat', 0)} Wilayah", "SLA Standar")
+            st.markdown(f"""
+            <div class="metric-card-box">
+                <div class="metric-card-label">Moderat</div>
+                <div class="metric-card-val" style="color: #FBBF24;">{c_kategori_sum.get('Moderat', 0)} <span style="font-size: 0.85rem; color: #94A3B8;">Wilayah</span></div>
+                <div class="metric-card-sub">SLA Standar</div>
+            </div>
+            """, unsafe_allow_html=True)
         with c_g4:
-            st.metric("Kategori Alot / Sulit", f"{c_kategori_sum.get('Sangat Sulit (Alot)', 0) + c_kategori_sum.get('Sulit', 0)} Wilayah", "Perlu Negosiasi Intensif")
+            st.markdown(f"""
+            <div class="metric-card-box">
+                <div class="metric-card-label">Alot / Sulit</div>
+                <div class="metric-card-val" style="color: #F87171;">{c_kategori_sum.get('Sangat Sulit (Alot)', 0) + c_kategori_sum.get('Sulit', 0)} <span style="font-size: 0.85rem; color: #94A3B8;">Wilayah</span></div>
+                <div class="metric-card-sub">Negosiasi Intensif</div>
+            </div>
+            """, unsafe_allow_html=True)
             
         st.markdown("<br>", unsafe_allow_html=True)
         
-        st.markdown("<div style='font-size: 14px; font-weight: 600; color: #f8fafc; margin-bottom: 10px;'>Scatter Matrix: Durasi Negosiasi (Hari) vs Efisiensi Diskon (%)</div>", unsafe_allow_html=True)
+        st.markdown("<div style='font-size: 0.92rem; font-weight: 700; color: #F8FAFC; margin-bottom: 8px;'>Scatter Matrix: Durasi Negosiasi (Hari) vs Efisiensi Diskon (%)</div>", unsafe_allow_html=True)
         fig_geo_scat = px.scatter(
             REGIONAL_STATS,
             x='avg_durasi',
@@ -1003,23 +1109,23 @@ elif menu == "Geospatial & Analisis Regional":
             hover_name='wilayah',
             hover_data={'deal': True, 'avg_asking': ':.0f', 'skor_kemudahan': ':.1f'},
             color_discrete_map={
-                'Sangat Mudah': '#10b981',
-                'Mudah': '#3b82f6',
-                'Moderat': '#fbbf24',
-                'Sulit': '#f97316',
-                'Sangat Sulit (Alot)': '#ef4444'
+                'Sangat Mudah': '#10B981',
+                'Mudah': '#3B82F6',
+                'Moderat': '#FBBF24',
+                'Sulit': '#F97316',
+                'Sangat Sulit (Alot)': '#EF4444'
             },
             labels={'avg_durasi': 'Rata-rata Durasi (Hari)', 'avg_diskon': 'Rata-rata Diskon (%)'},
             template="plotly_dark"
         )
-        fig_geo_scat.add_hline(y=15.0, line_dash="dash", line_color="#94a3b8", annotation_text="Target Diskon 15%")
-        fig_geo_scat.add_vline(x=17.0, line_dash="dash", line_color="#f87171", annotation_text="Batas SLA 17 Hari")
-        fig_geo_scat.update_layout(margin=dict(l=20, r=20, t=20, b=20), height=400, plot_bgcolor='#1e293b', paper_bgcolor='#1e293b')
+        fig_geo_scat.add_hline(y=15.0, line_dash="dash", line_color="#94A3B8", annotation_text="Target Diskon 15%")
+        fig_geo_scat.add_vline(x=17.0, line_dash="dash", line_color="#F87171", annotation_text="Batas SLA 17 Hari")
+        fig_geo_scat.update_layout(margin=dict(l=15, r=15, t=15, b=15), height=380, plot_bgcolor='#1E293B', paper_bgcolor='#1E293B')
         st.plotly_chart(fig_geo_scat, use_container_width=True)
 
         c_top, c_bot = st.columns(2)
         with c_top:
-            st.markdown("<div style='font-size: 13px; font-weight: 600; color: #34d399; margin-bottom: 8px;'>Top 10 Wilayah Paling Mudah (Tinggi Yield & Cepat)</div>", unsafe_allow_html=True)
+            st.markdown("<div style='font-size: 0.90rem; font-weight: 700; color: #34D399; margin-bottom: 6px;'>Top 10 Wilayah Paling Mudah (Tinggi Yield & Cepat)</div>", unsafe_allow_html=True)
             top_10 = REGIONAL_STATS.sort_values(by='skor_kemudahan', ascending=False).head(10)
             st.dataframe(
                 top_10[['wilayah', 'deal', 'avg_diskon', 'avg_durasi', 'skor_kemudahan', 'kategori']].style.format({
@@ -1032,7 +1138,7 @@ elif menu == "Geospatial & Analisis Regional":
             )
             
         with c_bot:
-            st.markdown("<div style='font-size: 13px; font-weight: 600; color: #f87171; margin-bottom: 8px;'>Top 10 Wilayah Paling Sulit (Karakteristik Pasar Alot)</div>", unsafe_allow_html=True)
+            st.markdown("<div style='font-size: 0.90rem; font-weight: 700; color: #F87171; margin-bottom: 6px;'>Top 10 Wilayah Paling Sulit (Karakteristik Pasar Alot)</div>", unsafe_allow_html=True)
             bot_10 = REGIONAL_STATS.sort_values(by='skor_kemudahan', ascending=True).head(10)
             st.dataframe(
                 bot_10[['wilayah', 'deal', 'avg_diskon', 'avg_durasi', 'skor_kemudahan', 'kategori']].style.format({
@@ -1049,10 +1155,9 @@ elif menu == "Geospatial & Analisis Regional":
 # MODUL 4: SIKLUS LEAD TIME & SLA
 # ==============================================================================
 elif menu == "Siklus Lead Time & SLA":
-    st.markdown("##### Dekomposisi 7 Tahapan Siklus Waktu & Harmonisasi Lead Time UPC (2024–2026)")
-    st.markdown("Analisis komprehensif 7 tahapan proses pembukaan cabang sejak pengajuan awal formulir survei hingga grand opening resmi.")
+    st.markdown("<div style='font-size: 1.1rem; font-weight: 700; color: #FFFFFF; margin-bottom: 4px;'>Dekomposisi 7 Tahapan Siklus Waktu & Harmonisasi Lead Time UPC (2024–2026)</div>", unsafe_allow_html=True)
+    st.markdown("<div style='font-size: 0.86rem; color: #94A3B8; margin-bottom: 16px;'>Analisis komprehensif 7 tahapan proses pembukaan cabang sejak pengajuan awal formulir survei hingga grand opening resmi.</div>", unsafe_allow_html=True)
     
-    # 1. Data Dekomposisi 7 Siklus Tahunan (Identik dengan generate_tabel_siklus.py & pipeline_master)
     df_siklus_tahunan = pd.DataFrame([
         {
             "Periode": "Tahun 2024",
@@ -1108,45 +1213,43 @@ elif menu == "Siklus Lead Time & SLA":
         }
     ])
 
-    # 4 KPI Summary Cards
     c_s1, c_s2, c_s3, c_s4 = st.columns(4)
     with c_s1:
         st.markdown("""
-            <div class="metric-card">
-                <div class="metric-label">Lead Time Pasca-Approval</div>
-                <div class="metric-value" style="color: #34d399;">58.4 <span style="font-size: 13px; font-weight: 500; color: #94a3b8;">Hari</span></div>
-                <div class="metric-sub">Tahap 2 s/d Tahap 7 (~58 Hari)</div>
-            </div>
+        <div class="metric-card-box">
+            <div class="metric-card-label">Lead Time Pasca-Approval</div>
+            <div class="metric-card-val" style="color: #34D399;">58.4 <span style="font-size: 0.85rem; color: #94A3B8;">Hari</span></div>
+            <div class="metric-card-sub">Tahap 2 s/d Tahap 7 (~58 Hari)</div>
+        </div>
         """, unsafe_allow_html=True)
     with c_s2:
         st.markdown("""
-            <div class="metric-card">
-                <div class="metric-label">Lead Time End-to-End</div>
-                <div class="metric-value" style="color: #c084fc;">69.1 <span style="font-size: 13px; font-weight: 500; color: #94a3b8;">Hari</span></div>
-                <div class="metric-sub">Pengajuan Formulir s/d Buka (~69 Hari)</div>
-            </div>
+        <div class="metric-card-box">
+            <div class="metric-card-label">Lead Time End-to-End</div>
+            <div class="metric-card-val" style="color: #C084FC;">69.1 <span style="font-size: 0.85rem; color: #94A3B8;">Hari</span></div>
+            <div class="metric-card-sub">Pengajuan s/d Buka (~69 Hari)</div>
+        </div>
         """, unsafe_allow_html=True)
     with c_s3:
         st.markdown("""
-            <div class="metric-card">
-                <div class="metric-label">Efisiensi Tahap 4 (Berkas)</div>
-                <div class="metric-value" style="color: #38bdf8;">-66.0%</div>
-                <div class="metric-sub">32.6 hr (2024) -> 11.1 hr (2026)</div>
-            </div>
+        <div class="metric-card-box">
+            <div class="metric-card-label">Efisiensi Tahap 4 (Berkas)</div>
+            <div class="metric-card-val" style="color: #38BDF8;">-66.0%</div>
+            <div class="metric-card-sub">32.6 hr (2024) -> 11.1 hr (2026)</div>
+        </div>
         """, unsafe_allow_html=True)
     with c_s4:
         st.markdown("""
-            <div class="metric-card">
-                <div class="metric-label">Efisiensi Tahap 7 (Tunggu Buka)</div>
-                <div class="metric-value" style="color: #fbbf24;">-60.7%</div>
-                <div class="metric-sub">14.0 hr (2024) -> 5.5 hr (2026)</div>
-            </div>
+        <div class="metric-card-box">
+            <div class="metric-card-label">Efisiensi Tahap 7 (Tunggu Buka)</div>
+            <div class="metric-card-val" style="color: #FBBF24;">-60.7%</div>
+            <div class="metric-card-sub">14.0 hr (2024) -> 5.5 hr (2026)</div>
+        </div>
         """, unsafe_allow_html=True)
 
     st.markdown("<br>", unsafe_allow_html=True)
 
-    # Visualisasi Stacked Horizontal Bar Chart Dekomposisi 7 Siklus
-    st.markdown("<div style='font-size: 14px; font-weight: 600; color: #f8fafc; margin-bottom: 10px;'>Dekomposisi 7 Tahapan Siklus Waktu Pembukaan Cabang UPC (Hari Kalender)</div>", unsafe_allow_html=True)
+    st.markdown("<div style='font-size: 0.92rem; font-weight: 700; color: #F8FAFC; margin-bottom: 8px;'>Dekomposisi 7 Tahapan Siklus Waktu Pembukaan Cabang UPC (Hari Kalender)</div>", unsafe_allow_html=True)
     
     bar_years = ['2024 (317 cabang)', '2025 (437 cabang)', '2026 (285 cabang)']
     fig_siklus = go.Figure()
@@ -1173,10 +1276,10 @@ elif menu == "Siklus Lead Time & SLA":
     fig_siklus.update_layout(
         barmode='stack',
         template="plotly_dark",
-        margin=dict(l=20, r=20, t=10, b=20),
-        height=320,
-        plot_bgcolor='#1e293b',
-        paper_bgcolor='#1e293b',
+        margin=dict(l=15, r=15, t=10, b=15),
+        height=300,
+        plot_bgcolor='#1E293B',
+        paper_bgcolor='#1E293B',
         legend=dict(orientation="h", yanchor="bottom", y=-0.45, xanchor="center", x=0.5, font=dict(size=10)),
         xaxis=dict(title="Rata-rata Durasi (Hari Kalender)")
     )
@@ -1184,17 +1287,13 @@ elif menu == "Siklus Lead Time & SLA":
 
     st.markdown("<br>", unsafe_allow_html=True)
 
-    # Multi-Tab: Tabel Tahunan vs Bulanan 2026
     tab_tab_yr, tab_tab_mo = st.tabs(["Tabel Dekomposisi 7 Siklus Tahunan (2024–2026)", "Detail Bulanan 7 Siklus Tahun 2026"])
     
     with tab_tab_yr:
-        st.markdown("<div style='font-size: 13px; font-weight: 600; color: #f8fafc; margin-bottom: 8px;'>Tabel Dekomposisi 7 Siklus Waktu Pembukaan Cabang UPC (2024–2026)</div>", unsafe_allow_html=True)
         st.dataframe(df_siklus_tahunan, use_container_width=True, hide_index=True)
         st.caption("Catatan: Tahap 1 pada tahun 2024 bernilai N/A* karena digitalisasi pencatatan tanggal survei baru dibakukan pada 2025.")
 
     with tab_tab_mo:
-        st.markdown("<div style='font-size: 13px; font-weight: 600; color: #f8fafc; margin-bottom: 8px;'>Tabel Detail Bulanan 7 Tahapan Siklus Waktu Tahun 2026 (Januari – Agustus)</div>", unsafe_allow_html=True)
-        
         df_siklus_bulanan_2026 = pd.DataFrame([
             {"Periode": "Januari 2026", "Cabang": "27", "Tahap 1: Pengajuan s/d Approved": "12.8 hr", "Tahap 2: Tunggu Nego": "4.2 hr", "Tahap 3: Durasi Nego": "9.2 hr", "Tahap 4: Pengumpulan Berkas": "19.5 hr", "Tahap 5: Tunggu Renovasi": "7.2 hr", "Tahap 6: Durasi Renovasi": "23.4 hr", "Tahap 7: Tunggu Open": "6.8 hr", "Pasca-Approval": "63.7 hr", "End-to-End": "76.5 hr"},
             {"Periode": "Februari 2026", "Cabang": "31", "Tahap 1: Pengajuan s/d Approved": "11.5 hr", "Tahap 2: Tunggu Nego": "3.8 hr", "Tahap 3: Durasi Nego": "10.4 hr", "Tahap 4: Pengumpulan Berkas": "16.2 hr", "Tahap 5: Tunggu Renovasi": "6.8 hr", "Tahap 6: Durasi Renovasi": "24.1 hr", "Tahap 7: Tunggu Open": "6.1 hr", "Pasca-Approval": "60.6 hr", "End-to-End": "72.1 hr"},
@@ -1210,8 +1309,7 @@ elif menu == "Siklus Lead Time & SLA":
 
     st.markdown("---")
     
-    # Law of Diminishing Returns Section
-    st.markdown("<div style='font-size: 14px; font-weight: 600; color: #f8fafc; margin-bottom: 10px;'>Evaluasi Law of Diminishing Returns: Durasi Negosiasi vs Efisiensi Diskon</div>", unsafe_allow_html=True)
+    st.markdown("<div style='font-size: 0.95rem; font-weight: 700; color: #F8FAFC; margin-bottom: 8px;'>Evaluasi Law of Diminishing Returns: Durasi Negosiasi vs Efisiensi Diskon</div>", unsafe_allow_html=True)
     
     if not DF_ACTIVE.empty:
         df_valid_dur = DF_ACTIVE[(DF_ACTIVE['durasi_hari'] > 0) & (DF_ACTIVE['durasi_hari'] <= 40)].copy()
@@ -1240,19 +1338,19 @@ elif menu == "Siklus Lead Time & SLA":
                 text='avg_diskon'
             )
             fig_dim.update_traces(texttemplate='%{text:.2f}%', textposition='outside')
-            fig_dim.update_layout(margin=dict(l=20, r=20, t=20, b=20), height=300, plot_bgcolor='#1e293b', paper_bgcolor='#1e293b')
+            fig_dim.update_layout(margin=dict(l=15, r=15, t=15, b=15), height=290, plot_bgcolor='#1E293B', paper_bgcolor='#1E293B')
             st.plotly_chart(fig_dim, use_container_width=True)
             
         with c_dim2:
             st.markdown("""
-                <div class="metric-card" style="height: 100%;">
-                    <div style="font-size: 14px; font-weight: 700; color: #38bdf8; margin-bottom: 8px;">Rekomendasi Kebijakan Negosiasi & SLA</div>
-                    <div style="font-size: 13px; line-height: 1.6; color: #cbd5e1;">
-                        1. <b>Rentang Optimal:</b> Rata-rata efisiensi diskon tertinggi terjadi pada rentang <b>1–10 hari</b> (17.8%).<br>
-                        2. <b>Diminishing Returns:</b> Perpanjangan waktu di atas 14 hari tidak menghasilkan peningkatan diskon secara signifikan (p-value > 0.05).<br>
-                        3. <b>Hard Stop Policy:</b> Direkomendasikan penetapan batas maksimal negosiasi pada hari ke-15 untuk mencegah keterlambatan pembukaan gerai baru.
-                    </div>
+            <div class="insight-box" style="border-left-color: #38BDF8;">
+                <div style="font-size: 0.92rem; font-weight: 700; color: #38BDF8; margin-bottom: 6px;">Rekomendasi Kebijakan Negosiasi & SLA</div>
+                <div style="font-size: 0.85rem; line-height: 1.6; color: #CBD5E1;">
+                    • <b>Rentang Optimal:</b> Rata-rata efisiensi diskon tertinggi terjadi pada rentang <b>1–10 hari</b> (17.8%).<br>
+                    • <b>Diminishing Returns:</b> Perpanjangan waktu di atas 14 hari tidak menghasilkan peningkatan diskon secara signifikan (p-value > 0.05).<br>
+                    • <b>Hard Stop Policy:</b> Direkomendasikan penetapan batas maksimal negosiasi pada hari ke-15 untuk mencegah keterlambatan pembukaan gerai baru.
                 </div>
+            </div>
             """, unsafe_allow_html=True)
 
 
@@ -1260,8 +1358,8 @@ elif menu == "Siklus Lead Time & SLA":
 # MODUL 5: MANAJEMEN RISIKO VENDOR & RENOVASI
 # ==============================================================================
 elif menu == "Manajemen Risiko Vendor & Renovasi":
-    st.markdown("##### Evaluasi Risiko Kontraktor Renovasi")
-    st.markdown("Analisis kepatuhan deviasi biaya (cost variance) dan ketepatan waktu pengerjaan (lead time).")
+    st.markdown("<div style='font-size: 1.1rem; font-weight: 700; color: #FFFFFF; margin-bottom: 4px;'>Evaluasi Risiko Kontraktor Renovasi Ruko</div>", unsafe_allow_html=True)
+    st.markdown("<div style='font-size: 0.86rem; color: #94A3B8; margin-bottom: 16px;'>Analisis kepatuhan deviasi biaya (cost variance) dan ketepatan waktu pengerjaan (lead time) kontraktor.</div>", unsafe_allow_html=True)
     
     vendor_data = [
         {"Kontraktor": "CV Cipta Karya Mandiri", "Total Proyek": 28, "Deviasi Biaya (%)": 2.1, "Keterlambatan (Hari)": 1.5, "Kategori Kinerja": "Tier 1 (Mitra Unggulan)"},
@@ -1274,7 +1372,7 @@ elif menu == "Manajemen Risiko Vendor & Renovasi":
     
     c_v1, c_v2 = st.columns([1.2, 1])
     with c_v1:
-        st.markdown("<div style='font-size: 14px; font-weight: 600; color: #f8fafc; margin-bottom: 10px;'>Kuadran Risiko Keterlambatan vs Deviasi Biaya</div>", unsafe_allow_html=True)
+        st.markdown("<div style='font-size: 0.92rem; font-weight: 700; color: #F8FAFC; margin-bottom: 8px;'>Kuadran Risiko Keterlambatan vs Deviasi Biaya</div>", unsafe_allow_html=True)
         fig_vend = px.scatter(
             df_vendor,
             x='Keterlambatan (Hari)',
@@ -1283,30 +1381,35 @@ elif menu == "Manajemen Risiko Vendor & Renovasi":
             color='Kategori Kinerja',
             hover_name='Kontraktor',
             color_discrete_map={
-                'Tier 1 (Mitra Unggulan)': '#10b981',
-                'Tier 2 (Moderat)': '#3b82f6',
-                'Tier 3 (Risiko Tinggi)': '#f97316',
-                'Red Flag (Kasus Kritis)': '#ef4444'
+                'Tier 1 (Mitra Unggulan)': '#10B981',
+                'Tier 2 (Moderat)': '#3B82F6',
+                'Tier 3 (Risiko Tinggi)': '#F97316',
+                'Red Flag (Kasus Kritis)': '#EF4444'
             },
             template="plotly_dark"
         )
-        fig_vend.add_vline(x=5.0, line_dash="dash", line_color="#fbbf24", annotation_text="Batas Waktu 5 Hari")
-        fig_vend.add_hline(y=7.0, line_dash="dash", line_color="#fbbf24", annotation_text="Batas Biaya 7%")
-        fig_vend.update_layout(margin=dict(l=20, r=20, t=20, b=20), height=340, plot_bgcolor='#1e293b', paper_bgcolor='#1e293b')
+        fig_vend.add_vline(x=5.0, line_dash="dash", line_color="#FBBF24", annotation_text="Batas Waktu 5 Hari")
+        fig_vend.add_hline(y=7.0, line_dash="dash", line_color="#FBBF24", annotation_text="Batas Biaya 7%")
+        fig_vend.update_layout(margin=dict(l=15, r=15, t=15, b=15), height=340, plot_bgcolor='#1E293B', paper_bgcolor='#1E293B')
         st.plotly_chart(fig_vend, use_container_width=True)
 
     with c_v2:
-        st.markdown("<div style='font-size: 14px; font-weight: 600; color: #f8fafc; margin-bottom: 10px;'>Matriks Kinerja Kontraktor</div>", unsafe_allow_html=True)
+        st.markdown("<div style='font-size: 0.92rem; font-weight: 700; color: #F8FAFC; margin-bottom: 8px;'>Matriks Kinerja Kontraktor</div>", unsafe_allow_html=True)
         st.dataframe(df_vendor, use_container_width=True, hide_index=True)
-        st.warning("Catatan Evaluasi: Kontraktor Trimo (Bali) memerlukan audit kontrak akibat rata-rata keterlambatan 14.5 hari dan deviasi anggaran 18.5%.")
+        st.markdown("""
+        <div class="insight-box" style="border-left-color: #EF4444; margin-top: 10px;">
+            <div style="font-size: 0.85rem; color: #FCA5A5; font-weight: 600;">Catatan Audit Khusus:</div>
+            <div style="font-size: 0.80rem; color: #E2E8F0; margin-top: 2px;">Kontraktor Trimo (Bali) memerlukan audit kontrak akibat rata-rata keterlambatan 14.5 hari dan deviasi anggaran 18.5%.</div>
+        </div>
+        """, unsafe_allow_html=True)
 
 
 # ==============================================================================
 # MODUL 6: DATA EXPLORER & EVALUASI BATCH
 # ==============================================================================
 elif menu == "Data Explorer & Evaluasi Batch":
-    st.markdown("##### Eksplorasi Data Cabang & Evaluasi Batch")
-    st.markdown("Pencarian dan penelusuran database 1.039 cabang serta pemrosesan serentak file ruko baru.")
+    st.markdown("<div style='font-size: 1.1rem; font-weight: 700; color: #FFFFFF; margin-bottom: 4px;'>Eksplorasi Data Cabang & Evaluasi Batch AI</div>", unsafe_allow_html=True)
+    st.markdown("<div style='font-size: 0.86rem; color: #94A3B8; margin-bottom: 16px;'>Pencarian dan penelusuran database 1.039 cabang serta pemrosesan serentak file ruko baru.</div>", unsafe_allow_html=True)
     
     tab_exp, tab_batch = st.tabs(["Eksplorasi Data Cabang", "Evaluasi Batch Multi-Ruko (AI)"])
     
@@ -1332,7 +1435,7 @@ elif menu == "Data Explorer & Evaluasi Batch":
                 df_filtered['wilayah'].astype(str).str.lower().str.contains(query, na=False)
             ]
 
-        st.markdown(f"<div style='font-size: 12px; color: #94a3b8; margin-bottom: 8px;'>Menampilkan <b>{len(df_filtered):,}</b> dari total <b>{len(DF_ACTIVE):,}</b> baris data</div>", unsafe_allow_html=True)
+        st.markdown(f"<div style='font-size: 0.80rem; color: #94A3B8; margin-bottom: 8px;'>Menampilkan <b>{len(df_filtered):,}</b> dari total <b>{len(DF_ACTIVE):,}</b> baris data</div>", unsafe_allow_html=True)
         
         display_cols = ['nomor_pengajuan', 'nama_cabang', 'wilayah', 'negosiator', 'harga_awal', 'harga_final', 'saving_rp', 'diskon_pct', 'durasi_hari']
         available_display_cols = [c for c in display_cols if c in df_filtered.columns]
@@ -1360,7 +1463,7 @@ elif menu == "Data Explorer & Evaluasi Batch":
             st.download_button("Ekspor Data Terfilter (Excel)", data=excel_buf.getvalue(), file_name="data_negosiasi_pgi_filtered.xlsx", mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", use_container_width=True)
 
     with tab_batch:
-        st.markdown("<div style='font-size: 13px; color: #cbd5e1; margin-bottom: 12px;'>Unggah file spreadsheet (CSV atau Excel) dengan kolom <code>wilayah</code> dan <code>harga_penawaran</code> untuk memproses rekomendasi secara serentak.</div>", unsafe_allow_html=True)
+        st.markdown("<div style='font-size: 0.86rem; color: #CBD5E1; margin-bottom: 12px;'>Unggah file spreadsheet (CSV atau Excel) dengan kolom <code>wilayah</code> dan <code>harga_penawaran</code> untuk memproses rekomendasi secara serentak.</div>", unsafe_allow_html=True)
         
         uploaded_file = st.file_uploader("Pilih Berkas CSV / Excel:", type=['csv', 'xlsx', 'xls'], label_visibility="collapsed")
         
@@ -1395,7 +1498,7 @@ elif menu == "Data Explorer & Evaluasi Batch":
                         })
                     
                     batch_res_df = pd.DataFrame(results_batch)
-                    st.markdown("<div style='font-size: 14px; font-weight: 600; color: #f8fafc; margin: 16px 0 8px 0;'>Hasil Evaluasi AI Multi-Ruko</div>", unsafe_allow_html=True)
+                    st.markdown("<div style='font-size: 0.95rem; font-weight: 700; color: #F8FAFC; margin: 16px 0 8px 0;'>Hasil Evaluasi AI Multi-Ruko</div>", unsafe_allow_html=True)
                     st.dataframe(
                         batch_res_df.style.format({
                             'Harga Penawaran': lambda x: rupiah(x),
@@ -1421,8 +1524,8 @@ elif menu == "Data Explorer & Evaluasi Batch":
 # ==============================================================================
 st.markdown("---")
 st.markdown("""
-    <div style="text-align: center; color: #64748b; font-size: 11px; padding: 6px 0 16px 0;">
-        © 2026 <b>Pusat Gadai Indonesia (PGI)</b> — Divisi Bisnis & Ekspansi Jaringan UPC.<br>
-        Sistem Analisis & Engine Rekomendasi Terpadu.
-    </div>
+<div style="text-align: center; color: #64748B; font-size: 0.74rem; padding: 6px 0 16px 0;">
+    © 2026 <b>Pusat Gadai Indonesia (PGI)</b> — Divisi Bisnis & Ekspansi Jaringan UPC.<br>
+    Sistem Analisis Terpadu & Decision Support System.
+</div>
 """, unsafe_allow_html=True)
